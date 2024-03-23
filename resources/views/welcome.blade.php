@@ -14,7 +14,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 :root{
-    --first-color: #12192C;
+    --first-color: blue;
     --text-color: #8590AD;
 }
 
@@ -154,19 +154,6 @@ img{
     color: var(--first-color);
     transition: .3s;
 }
-.form__forgot{
-    display: block;
-    text-align: right;
-    margin-bottom: 2rem;
-    font-size: var(--normal-font-size);
-    color: var(--text-color);
-    font-weight: 500;
-    transition: .5;
-}
-.form__forgot:hover{
-    color: var(--first-color);
-    transition: .5s;
-}
 .form__button{
     width: 100%;
     padding: 1rem;
@@ -192,21 +179,13 @@ img{
     font-size: var(--normal-font-size);
     margin-bottom: 1rem;
 }
-.form__social-icon{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    margin-right: 1rem;
-    padding: .5rem;
-    background-color: var(--text-color);
-    color: #fff;
-    font-size: 1.25rem;
-    border-radius: 50%;
-}
-.form__social-icon:hover{
-    background-color: var(--first-color);
+
+
+
+@media screen and (min-width: 768px) and (max-width: 967px){
+    .form__content{
+        width: 70%;
+    }
 }
 
 @media screen and (min-width: 968px){
@@ -227,23 +206,23 @@ img{
         padding: 0 2rem;
     }
     .form__content{
-        width: 320px;
+        width: 50%;
     }
     .form__img{
         display: block;
-        width: 700px;
+        width: 90%;
         justify-self: center;
     }
 }
 
-
 </style>
+
 <div class="l-form">
     <div class="shape1"></div>
     <div class="shape2"></div>
 
     <div class="form">
-        <img src="https://img.freepik.com/free-vector/global-data-security-personal-data-security-cyberdata-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37336.jpg?t=st=1711118467~exp=1711122067~hmac=76a2491bee305ad6317c15a6d3751238a19865e382bdd29f42fe44fc39abeed5&w=826" alt="" class="form__img">
+        <img src="https://img.freepik.com/free-vector/welcome-word-flat-cartoon-people-characters_81522-4207.jpg?w=1380&t=st=1711178574~exp=1711179174~hmac=263fd476dfcb885a32b8190fabd5ab941a7a9a58aec05ac0725f88c68f22acb6" alt="login"  class="form__img">
 
 <form action="" class="form__content">
     <h1 class="form__title">Welcome</h1>
@@ -269,17 +248,8 @@ img{
             <input type="password" class="form__input">
         </div>
     </div>
-    <a href="#" class="form__forgot">Forgot Password?</a>
-
     <input type="submit" class="form__button" value="Login">
 
-    <div class="form__social">
-        <span class="form__social-text">Our login with</span>
-
-        <a href="#" class="form__social-icon"><i class='bx bxl-facebook' ></i></a>
-        <a href="#" class="form__social-icon"><i class='bx bxl-google' ></i></a>
-        <a href="#" class="form__social-icon"><i class='bx bxl-instagram' ></i></a>
-    </div>
 </form>
 </div>
 </div>
