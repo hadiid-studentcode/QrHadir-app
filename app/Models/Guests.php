@@ -15,17 +15,23 @@ class Guests extends Model
 
     protected $primaryKey = 'id';
 
-    public function GetGuests(){
+    public function GetGuests()
+    {
         return Guests::all();
     }
 
-    public function setGuests($data){
+    public function setGuests($data)
+    {
         return Guests::create($data);
     }
-    public function deleteGuests($id){
+
+    public function deleteGuests($id)
+    {
         return Guests::find($id)->delete();
     }
-    public function getGuestsById($id){
+
+    public function getGuestsById($id)
+    {
         return Guests::find($id);
     }
 }

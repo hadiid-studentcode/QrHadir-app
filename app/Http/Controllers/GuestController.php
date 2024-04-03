@@ -15,6 +15,7 @@ class GuestController extends Controller
 
         $resultGuest = new Guests();
         $dataGuest = $resultGuest->GetGuests();
+
         return view('pages.guest.index')
             ->with('guests', $dataGuest);
     }
@@ -37,10 +38,10 @@ class GuestController extends Controller
             'delegasi' => 'required',
         ]);
 
-        $data =  [
+        $data = [
             'name' => $request->nama,
             'delegasi' => $request->delegasi,
-            'qr_code' => bcrypt($request->nama . '' . $request->delegasi),
+            'qr_code' => bcrypt($request->nama.''.$request->delegasi),
 
         ];
 
@@ -55,16 +56,13 @@ class GuestController extends Controller
      */
     public function show(string $id)
     {
-       
 
         $resultGuest = new Guests();
         $dataGuest = $resultGuest->getGuestsById($id);
-      
-        
 
         return view('pages.guest.show')
-      
-        ->with('guest', $dataGuest);
+
+            ->with('guest', $dataGuest);
     }
 
     /**
@@ -92,5 +90,15 @@ class GuestController extends Controller
         $resultGuest->deleteGuests($id);
 
         return back();
+    }
+
+    public function cetak()
+    {
+
+        $resultGuest = new Guests();
+        $dataGuest = $resultGuest->GetGuests();
+
+        return view('pages.guest.cetak')
+            ->with('guests', $dataGuest);
     }
 }

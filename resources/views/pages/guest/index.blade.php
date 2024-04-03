@@ -20,7 +20,7 @@
 
 
     <h1>Data Mahasiswa</h1>
-    <a href="/cetak">Cetak</a>
+    <a href="/cetak" target="_blank">Cetak</a>
     <table border="1">
         <thead>
             <tr>
