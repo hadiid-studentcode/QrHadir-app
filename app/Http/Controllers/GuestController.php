@@ -44,10 +44,9 @@ class GuestController extends Controller
         $data = [
             'nama_lengkap' => $request->nama,
             'delegasi' => $request->delegasi,
-            'qr_code' => Crypt::encryptString($request->nama . '' . $request->delegasi),
+            'qr_code' => Crypt::encryptString($request->nama.''.$request->delegasi),
 
         ];
-
 
         $resultGuest = new Guests();
         $resultGuest->setGuests($data);

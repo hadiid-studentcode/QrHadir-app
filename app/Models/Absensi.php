@@ -21,16 +21,17 @@ class Absensi extends Model
 
     protected $primaryKey = 'id';
 
-    public function setAbsensi($data){
+    public function setAbsensi($data)
+    {
 
         return Absensi::create($data);
     }
-    public function getAbsensiByDate($date){
+
+    public function getAbsensiByDate($date)
+    {
 
         return Absensi::where('date', $date)
-        ->join('guests', 'absensi.id_guests', '=', 'guests.id')
-        ->get();
+            ->join('guests', 'absensi.id_guests', '=', 'guests.id')
+            ->get();
     }
-
-
 }

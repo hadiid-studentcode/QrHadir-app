@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Absensi;
 use App\Models\Kelola_absensi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class KelolaAbsenController extends Controller
 {
@@ -16,7 +15,6 @@ class KelolaAbsenController extends Controller
     {
         $resultKelolaAbsensi = new Kelola_absensi();
         $dataKelolaAbsensi = $resultKelolaAbsensi->getKelolaAbsensi();
-
 
         return view('pages.kelola.index')
             ->with('kelola_absensi', $dataKelolaAbsensi)
@@ -44,7 +42,7 @@ class KelolaAbsenController extends Controller
         $data = [
             'date' => $date,
             'check_in_time' => $check_in_time,
-            'check_out_time' => $check_out_time
+            'check_out_time' => $check_out_time,
         ];
 
         $resultKelolaAbsensi = new Kelola_absensi();
@@ -64,10 +62,8 @@ class KelolaAbsenController extends Controller
         $resultKelolaAbsensi = new Kelola_absensi();
         $dataKelolaAbsensi = $resultKelolaAbsensi->getKelolaAbsensiById($id);
 
-
         $resultAbsensi = new Absensi();
         $dataAbsensi = $resultAbsensi->getAbsensiByDate($dataKelolaAbsensi->date);
-
 
         return view('pages.kelola.show')
             ->with('absensi', $dataAbsensi)

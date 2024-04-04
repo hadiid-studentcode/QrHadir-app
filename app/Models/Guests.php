@@ -34,6 +34,7 @@ class Guests extends Model
     {
         return Guests::find($id);
     }
+
     public function getGuestsByQrCode($qrCode)
     {
         return Guests::where('qr_code', $qrCode)->first();
