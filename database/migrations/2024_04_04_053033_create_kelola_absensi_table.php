@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -11,12 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guests', function (Blueprint $table) {
+        Schema::create('kelola_absensi', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap');
-            $table->string('delegasi');
-            $table->string('qr_code');
-
+            $table->date('date');
+            $table->time('check_in_time');
+            $table->time('check_out_time');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guests');
+        Schema::dropIfExists('kelola_absensi');
     }
 };

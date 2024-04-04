@@ -11,7 +11,7 @@ class Guests extends Model
 
     protected $table = 'guests';
 
-    protected $fillable = ['name', 'delegasi', 'qr_code'];
+    protected $fillable = ['nama_lengkap', 'delegasi', 'qr_code'];
 
     protected $primaryKey = 'id';
 

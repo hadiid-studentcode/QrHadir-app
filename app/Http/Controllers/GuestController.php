@@ -39,7 +39,7 @@ class GuestController extends Controller
         ]);
 
         $data = [
-            'name' => $request->nama,
+            'nama_lengkap' => $request->nama,
             'delegasi' => $request->delegasi,
             'qr_code' => bcrypt($request->nama.''.$request->delegasi),
 

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guests', function (Blueprint $table) {
+        Schema::create('absensi', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap');
-            $table->string('delegasi');
-            $table->string('qr_code');
-
+            $table->foreignId('id_guests')->references('id')->on('guests')->onDelete('cascade')->onUpdate('cascade');
+            $table->date('date');
+            $table->time('time');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guests');
+        Schema::dropIfExists('absensi');
     }
 };
