@@ -47,6 +47,8 @@
 
                         </form>
 
+                        <a href="/kelola-absensi/{{ $kelola_absen->id }}">Views</a>
+
                     </td>
                 </tr>
             @endforeach

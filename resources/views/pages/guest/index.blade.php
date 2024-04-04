@@ -34,7 +34,7 @@
             @foreach ($guests as $guest)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $guest->name }}</td>
+                    <td>{{ $guest->nama_lengkap }}</td>
                     <td>{{ $guest->delegasi }}</td>
                     <td>
 

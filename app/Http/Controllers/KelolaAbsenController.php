@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absensi;
 use App\Models\Kelola_absensi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class KelolaAbsenController extends Controller
 {
@@ -54,7 +56,22 @@ class KelolaAbsenController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        //    get tanggal di kelola absensi
+
+        $resultKelolaAbsensi = new Kelola_absensi();
+        $dataKelolaAbsensi = $resultKelolaAbsensi->getKelolaAbsensiById($id);
+
+
+        $resultAbsensi = new Absensi();
+        $dataAbsensi = $resultAbsensi->getAbsensiByDate($dataKelolaAbsensi->date);
+
+
+        return view('pages.kelola.show')
+            ->with('absensi', $dataAbsensi)
+            ->with('date', $dataKelolaAbsensi->date)
+            ->with('first_time', $dataKelolaAbsensi->check_in_time)
+            ->with('last_time', $dataKelolaAbsensi->check_out_time);
     }
 
     /**

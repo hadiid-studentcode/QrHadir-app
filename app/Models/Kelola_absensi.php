@@ -29,4 +29,7 @@ class Kelola_absensi extends Model
     public function deleteKelolaAbsensi($id){
         return Kelola_absensi::find($id)->delete();
     }
+    public function getKelolaAbsensiById($id){
+        return Kelola_absensi::find($id);
+    }
 }

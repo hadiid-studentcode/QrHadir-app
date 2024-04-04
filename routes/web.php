@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\KelolaAbsenController;
@@ -23,3 +24,8 @@ Route::get('/cetak', [GuestController::class, 'cetak'])->name('guests.cetak');
 
 // kelola absensi
 Route::resource('/kelola-absensi', KelolaAbsenController::class);
+
+// absensi
+Route::get('/absensi/{qr_code}', [AbsensiController::class, 'store'])->name('absen.store');
+
+Route::get('/absensi', [AbsensiController::class, 'index'])->name('absen.index');

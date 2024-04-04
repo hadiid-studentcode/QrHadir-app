@@ -12,9 +12,10 @@
 
 <body>
 
+
     <div id="qrcode-2"></div>
 
-    <h3>Nama Lengkap : {{ $guest->name }}</h3>
+    <h3>Nama Lengkap : {{ $guest->nama_lengkap }}</h3>
     <h3>Delegasi : {{ $guest->delegasi }} </h3>
 
     <script type="text/javascript">

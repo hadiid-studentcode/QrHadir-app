@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class GuestController extends Controller
 {
@@ -41,9 +42,10 @@ class GuestController extends Controller
         $data = [
             'nama_lengkap' => $request->nama,
             'delegasi' => $request->delegasi,
-            'qr_code' => bcrypt($request->nama.''.$request->delegasi),
+            'qr_code' => Crypt::encryptString($request->nama . '' . $request->delegasi),
 
         ];
+
 
         $resultGuest = new Guests();
         $resultGuest->setGuests($data);
