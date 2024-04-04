@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelola_absensi;
 use Illuminate\Http\Request;
 
 class KelolaAbsenController extends Controller
@@ -11,7 +12,12 @@ class KelolaAbsenController extends Controller
      */
     public function index()
     {
-        //
+        $resultKelolaAbsensi = new Kelola_absensi();
+        $dataKelolaAbsensi = $resultKelolaAbsensi->getKelolaAbsensi();
+
+
+        return view('pages.kelola.index')
+            ->with('kelola_absensi', $dataKelolaAbsensi);
     }
 
     /**
@@ -27,7 +33,20 @@ class KelolaAbsenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date = $request->tanggal;
+        $check_in_time = $request->check_in;
+        $check_out_time = $request->check_out;
+
+        $data = [
+            'date' => $date,
+            'check_in_time' => $check_in_time,
+            'check_out_time' => $check_out_time
+        ];
+
+        $resultKelolaAbsensi = new Kelola_absensi();
+        $resultKelolaAbsensi->setKelolaAbsensi($data);
+
+        return back();
     }
 
     /**
@@ -59,6 +78,9 @@ class KelolaAbsenController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $resultKelolaAbsensi = new Kelola_absensi();
+        $resultKelolaAbsensi->deleteKelolaAbsensi($id);
+
+        return back();
     }
 }

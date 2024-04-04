@@ -19,4 +19,14 @@ class Kelola_absensi extends Model
     ];
 
     protected $primaryKey = 'id';
+
+    public function getKelolaAbsensi(){
+        return Kelola_absensi::all();
+    }
+    public function setKelolaAbsensi($data){
+        return Kelola_absensi::create($data);
+    }
+    public function deleteKelolaAbsensi($id){
+        return Kelola_absensi::find($id)->delete();
+    }
 }
