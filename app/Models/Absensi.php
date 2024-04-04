@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Absensi extends Model
 {
     use HasFactory;
-
     use HasFactory;
 
     protected $table = 'absensi';
