@@ -19,7 +19,9 @@ class KelolaAbsenController extends Controller
 
 
         return view('pages.kelola.index')
-            ->with('kelola_absensi', $dataKelolaAbsensi);
+            ->with('kelola_absensi', $dataKelolaAbsensi)
+            ->with('title', 'Kelola Absensi')
+            ->with('active', 'kelola');
     }
 
     /**

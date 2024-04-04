@@ -1,65 +1,67 @@
 @extends('layouts.main')
 
 @section('main')
-    <h1>Halaman Guest/Tamu</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" type="button">Tambah</button>
+                <div class="card">
 
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Data Tamu / Guest</h4>
+                        <p class="card-category"> Data Tamu / Guest untuk didaftarkan absensi</p>
 
-    {{-- jadikan modal --}}
-    <form action="/guests" method="post">
-        @csrf
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        No
+                                    </th>
+                                    <th>
+                                        Nama Lengkap
+                                    </th>
+                                    <th>
+                                        Delegasi
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
 
-        <label for="nama">Nama Lengkap</label>
-        <input type="text" name="nama" id="nama"> <br>
+                                </thead>
+                                <tbody>
+                                    @foreach ($guests as $guest)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $guest->nama_lengkap }}</td>
+                                            <td>{{ $guest->delegasi }}</td>
+                                            <td>
 
-        <label for="delegasi">Delegasi</label>
-        <input type="text" name="delegasi" id="delegasi"> <br>
-
-        <button type="submit">Submit</button>
-
-    </form>
-
-
-    <h1>Data Mahasiswa</h1>
-    <a href="/cetak" target="_blank">Cetak</a>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Lengkap</th>
-                <th>Delegasi</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($guests as $guest)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $guest->nama_lengkap }}</td>
-                    <td>{{ $guest->delegasi }}</td>
-                    <td>
-
-                        <a href="/guests/{{ $guest->id }}">Lihat</a>
-
-
-
-
-                        <form action="/guests/{{ $guest->id }}" method="post">
-                            @csrf
-                            @method('delete')
-
-                            <button type="submit">Hapus</button>
-
-                        </form>
-
-
-                    </td>
-                </tr>
-            @endforeach
+                                                <a class="btn btn-info" href="/guests/{{ $guest->id }}">Lihat</a>
 
 
 
 
-            <!-- Tambahkan baris data lainnya sesuai kebutuhan -->
-        </tbody>
-    </table>
+                                                <form action="/guests/{{ $guest->id }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+
+                                                </form>
+
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 @endsection

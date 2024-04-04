@@ -18,7 +18,9 @@ class GuestController extends Controller
         $dataGuest = $resultGuest->GetGuests();
 
         return view('pages.guest.index')
-            ->with('guests', $dataGuest);
+            ->with('guests', $dataGuest)
+            ->with('title', 'Guest')
+            ->with('active', 'guests');
     }
 
     /**
