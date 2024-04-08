@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_lengkap');
             $table->string('delegasi');
+            $table->string('link');
             $table->string('qr_code');
 
             $table->timestamps();

@@ -44,7 +44,8 @@ class GuestController extends Controller
         $data = [
             'nama_lengkap' => $request->nama,
             'delegasi' => $request->delegasi,
-            'qr_code' => 'http://127.0.0.1:8000/absensi/' . rand(1,1000),
+            'link' => 'http://127.0.0.1:8000/absensi/',
+            'qr_code' => rand(1,1000),
 
         ];
 

@@ -22,6 +22,7 @@ class AbsensiController extends Controller
         $resultGuests = new Guests();
         $dataGuests = $resultGuests->getGuestsByQrCode($qrcode);
 
+
         if ($dataGuests == null) {
             return 'not found';
         } else {

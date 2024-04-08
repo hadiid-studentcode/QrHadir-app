@@ -35,7 +35,7 @@
 
     <script type="text/javascript">
         var qrcode = new QRCode(document.getElementById("qrcode-2"), {
-            text: "{{ $guest->qr_code }}",
+            text: "{{ $guest->link }}{{ $guest->qr_code }}",
             width: 400,
             height: 400,
             colorDark: "#000000",
