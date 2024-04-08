@@ -2,7 +2,6 @@
 
 @section('main')
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -55,13 +54,12 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title">Informasi Kehadiran</h4>
+                        <h4 class="card-title">informasi Kehadiran</h4>
                         <p class="card-category">update pada absensi 12-12-2021, 12:00 - 13:00</p>
                     </div>
                     <div class="card-body table-responsive">
@@ -69,19 +67,16 @@
                             <thead class="text-warning">
                                 <th>No</th>
                                 <th>Nama Lengkap</th>
-                                <th>Waktu Absen</th>
-                                <th>Status</th>
+                                <th>Waktu absen</th>
+                                <th>status</th>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Hadiid Andri Yulison</td>
+                                    <td>Hadiid andri Yulison</td>
                                     <td>12.10</td>
                                     <td>hadir</td>
                                 </tr>
-                                
-                               
-                              
                             </tbody>
                         </table>
                     </div>

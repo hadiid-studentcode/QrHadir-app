@@ -44,7 +44,7 @@ class GuestController extends Controller
         $data = [
             'nama_lengkap' => $request->nama,
             'delegasi' => $request->delegasi,
-            'qr_code' => Crypt::encryptString($request->nama.''.$request->delegasi),
+            'qr_code' => rand(100000, 999999),
 
         ];
 
@@ -64,7 +64,8 @@ class GuestController extends Controller
         $dataGuest = $resultGuest->getGuestsById($id);
 
         return view('pages.guest.show')
-
+        ->with('title', 'Guest')
+            ->with('active', 'guests')
             ->with('guest', $dataGuest);
     }
 

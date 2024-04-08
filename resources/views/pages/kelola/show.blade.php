@@ -1,31 +1,47 @@
 @extends('layouts.main')
 
 @section('main')
-    <h1>Halaman kelola Absen tanggal {{ $date }} waktu {{ $first_time }} - {{ $last_time }}</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Lengkap</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($absensi as $absen)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $absen->nama_lengkap }}</td>
-                    <td>{{ $absen->date }}</td>
-                    <td>{{ $absen->time }}</td>
-                    <td>{{ $absen->status }}</td>
-                </tr>
-            @endforeach
+                <div class="card">
 
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Halaman Kelola Absensi</h4>
+                        <p class="card-category">{{ $date }} - {{ $first_time }} - {{ $last_time }}</p>
 
-            <!-- Tambahkan baris data lainnya sesuai kebutuhan -->
-        </tbody>
-    </table>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>No</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+
+                                </thead>
+                                <tbody>
+                                    @foreach ($absensi as $absen)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $absen->nama_lengkap }}</td>
+                                            <td>{{ $absen->date }}</td>
+                                            <td>{{ $absen->time }}</td>
+                                            <td>{{ $absen->status }}</td>
+
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 @endsection

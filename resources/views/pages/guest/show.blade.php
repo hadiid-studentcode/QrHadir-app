@@ -1,32 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>show</title>
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+@section('main')
+    <div class="row">
+        <div class="col-md-4">
 
-</head>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-avatar">
+                    <div id="qrcode-2"></div>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-category">{{ $guest->delegasi }}</h6>
+                    <h4 class="card-title">{{ $guest->nama_lengkap }}</h4>
+                    <p class="card-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ducimus tempora autem laudantium quod,
+                        veritatis facere perferendis perspiciatis esse optio harum iste, consectetur exercitationem aliquid
+                        ratione porro odio ipsa similique!
+                    </p>
+                    <a href="/guests" class="btn btn-primary btn-round">Kembali</a>
 
-<body>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+    </div>
 
 
-    <div id="qrcode-2"></div>
 
-    <h3>Nama Lengkap : {{ $guest->nama_lengkap }}</h3>
-    <h3>Delegasi : {{ $guest->delegasi }} </h3>
+
 
     <script type="text/javascript">
         var qrcode = new QRCode(document.getElementById("qrcode-2"), {
             text: "{{ $guest->qr_code }}",
-            width: 500,
-            height: 500,
+            width: 400,
+            height: 400,
+            colorDark: "#000000",
         });
+
+        function download() {
+
+        }
     </script>
-
-
-</body>
-
-</html>
+@endsection

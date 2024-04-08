@@ -13,6 +13,8 @@ class KelolaAbsenController extends Controller
      */
     public function index()
     {
+
+
         $resultKelolaAbsensi = new Kelola_absensi();
         $dataKelolaAbsensi = $resultKelolaAbsensi->getKelolaAbsensi();
 
@@ -69,6 +71,8 @@ class KelolaAbsenController extends Controller
             ->with('absensi', $dataAbsensi)
             ->with('date', $dataKelolaAbsensi->date)
             ->with('first_time', $dataKelolaAbsensi->check_in_time)
+            ->with('title', 'Kelola Absensi')
+            ->with('active', 'kelola')
             ->with('last_time', $dataKelolaAbsensi->check_out_time);
     }
 
