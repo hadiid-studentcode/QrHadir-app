@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\KelolaAbsenController;
 use App\Http\Controllers\LoginController;
+use App\Http\Resources\AbsenResource;
+use App\Models\Guests;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,3 +31,4 @@ Route::resource('/kelola-absensi', KelolaAbsenController::class);
 Route::get('/absensi/{qr_code}', [AbsensiController::class, 'store'])->name('absen.store');
 
 Route::get('/absensi', [AbsensiController::class, 'index'])->name('absen.index');
+

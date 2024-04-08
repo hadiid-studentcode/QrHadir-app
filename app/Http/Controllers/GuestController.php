@@ -44,9 +44,10 @@ class GuestController extends Controller
         $data = [
             'nama_lengkap' => $request->nama,
             'delegasi' => $request->delegasi,
-            'qr_code' => rand(100000, 999999),
+            'qr_code' => 'http://127.0.0.1:8000/absensi/' . rand(1,1000),
 
         ];
+
 
         $resultGuest = new Guests();
         $resultGuest->setGuests($data);
