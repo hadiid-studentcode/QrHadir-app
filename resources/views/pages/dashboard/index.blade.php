@@ -73,7 +73,7 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Hadiid andri Yulison</td>
+                                    <td>Putra Saputra</td>
                                     <td>12.10</td>
                                     <td>hadir</td>
                                 </tr>
