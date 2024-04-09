@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kelola_absensi', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->date('date');
             $table->time('check_in_time');
             $table->time('check_out_time');

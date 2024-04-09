@@ -44,8 +44,8 @@ class GuestController extends Controller
         $data = [
             'nama_lengkap' => $request->nama,
             'delegasi' => $request->delegasi,
-            'link' => 'http://127.0.0.1:8000/absensi/',
-            'qr_code' => rand(1,1000),
+            'link' => '',
+            'qr_code' => '',
 
         ];
 
@@ -64,6 +64,24 @@ class GuestController extends Controller
 
         $resultGuest = new Guests();
         $dataGuest = $resultGuest->getGuestsById($id);
+
+
+        if(empty($dataGuest->qr_code)){
+
+           
+            $data = [
+
+                'qr_code' => $dataGuest->id . '-' . bcrypt($dataGuest->nama)
+
+            ];
+
+            // update data
+            $resultGuest = new Guests();
+            $resultGuest->updateGuests($data, $id);
+        }
+
+
+       
 
         return view('pages.guest.show')
         ->with('title', 'Guest')

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('absensi', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->foreignId('id_guests')->references('id')->on('guests')->onDelete('cascade')->onUpdate('cascade');
             $table->date('date');
             $table->time('time');

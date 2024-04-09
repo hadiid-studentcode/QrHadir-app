@@ -39,4 +39,7 @@ class Guests extends Model
     {
         return Guests::where('qr_code', $qrCode)->first();
     }
+    public function updateGuests($data, $id){
+        return Guests::where('id', $id)->update($data);
+    }
 }
