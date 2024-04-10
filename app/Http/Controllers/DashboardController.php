@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absensi;
+use App\Models\Guests;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,6 +13,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // total guest
+        $totalGuests = Guests::count();
+        // total guest yang hadir diambil dari table absensi
+        $totalHadir = Absensi::where('status', 'hadir')->count();
+        dd($totalHadir);
+
+        // end
+
+
         return view('pages.dashboard.index')
             ->with('active', 'dashboard')
             ->with('title', 'Dashboard');
