@@ -24,7 +24,6 @@ class DashboardController extends Controller
         $totalGuests = $this->guests->jumlahGuests();
         $totalHadir = $this->absensi->getGuestAbsensiHadir();
         $kelolaAbsensiDataTerbaru = $this->kelolaAbsensi->getKelolaAbsensi()->last()->first();
-        // test
 
         $absenBerdasarkanTanggalTerbaru = $this->absensi->getAbsensiByDate($kelolaAbsensiDataTerbaru->date);
 
