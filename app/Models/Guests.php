@@ -42,4 +42,8 @@ class Guests extends Model
     public function updateGuests($data, $id){
         return Guests::where('id', $id)->update($data);
     }
+    public function jumlahGuests(){
+        return Guests::count();
+    }
+ 
 }

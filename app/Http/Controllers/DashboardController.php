@@ -4,74 +4,48 @@ namespace App\Http\Controllers;
 
 use App\Models\Absensi;
 use App\Models\Guests;
-use Illuminate\Http\Request;
+use App\Models\Kelola_absensi;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $guests;
+    protected $absensi;
+    protected $kelolaAbsensi;
+
+    public function __construct(Guests $guests, Absensi $absensi, Kelola_absensi $kelolaAbsensi)
+    {
+        $this->guests = $guests;
+        $this->absensi = $absensi;
+        $this->kelolaAbsensi = $kelolaAbsensi;
+    }
+
     public function index()
     {
-        // total guest
-        $totalGuests = Guests::count();
-        // total guest yang hadir diambil dari table absensi
-        $totalHadir = Absensi::where('status', 'hadir')->count();
-        dd($totalHadir);
+        $totalGuests = $this->guests->jumlahGuests();
+        $totalHadir = $this->absensi->getGuestAbsensiHadir();
+        $kelolaAbsensiDataTerbaru = $this->kelolaAbsensi->getKelolaAbsensi()->last()->first();
 
-        // end
+        $absenBerdasarkanTanggalTerbaru = $this->absensi->getAbsensiByDate($kelolaAbsensiDataTerbaru->date);
 
 
-        return view('pages.dashboard.index')
-            ->with('active', 'dashboard')
-            ->with('title', 'Dashboard');
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $data = [
+            'totalGuests' => $totalGuests,
+            'totalHadir' => $totalHadir,
+            'kelolaAbsensiData' => $kelolaAbsensiDataTerbaru,
+            'date' => $kelolaAbsensiDataTerbaru->date,
+            'time_first' => $kelolaAbsensiDataTerbaru->check_in_time,
+            'time_last' => $kelolaAbsensiDataTerbaru->check_out_time,
+            'absenBerdasarkanTanggalTerbaru' => $absenBerdasarkanTanggalTerbaru,
+            'active' => 'dashboard',
+            'title' => 'Dashboard'
+        ];
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+       
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('pages.dashboard.index', $data);
     }
 }
