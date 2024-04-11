@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('nama_lengkap');
             $table->string('delegasi');
-            $table->string('link');
-            $table->string('qr_code');
+            $table->string('link')->nullable();
+            $table->string('qr_code')->nullable();
 
             $table->timestamps();
         });

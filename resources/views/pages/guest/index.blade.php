@@ -7,6 +7,7 @@
                 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#tambahGuest">Tambah</button>
                 <div class="card">
 
+
                     <!-- Modal -->
                     <div class="modal fade" id="tambahGuest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -15,7 +16,7 @@
                                 @csrf
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Tambah Tamu / Guest</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -24,14 +25,14 @@
                                         <div class="mb-3">
                                             <label for="nama" class="form-label text-dark">Nama Lengkap</label>
                                             <input type="text" class="form-control text-dark" id="nama"
-                                                name="nama">
+                                                name="nama" required>
 
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="delegasi" class="form-label text-dark">Delegasi</label>
                                             <input type="text" class="form-control text-dark" id="delegasi"
-                                                name="delegasi">
+                                                name="delegasi" required>
                                         </div>
 
                                     </div>
@@ -44,11 +45,21 @@
                     </div>
                 </div>
 
+
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">Data Tamu / Guest</h4>
                     <p class="card-category"> Data Tamu / Guest untuk didaftarkan absensi</p>
 
                 </div>
+
+                @foreach (['success', 'error'] as $msg)
+                    @if(session($msg))
+                        <div class="alert alert-{{ $msg == 'success' ? 'success' : 'danger' }}" role="alert">
+                            {{ session($msg) }}
+                        </div>
+                    @endif
+                @endforeach
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
@@ -100,5 +111,4 @@
         </div>
 
     </div>
-   
 @endsection
