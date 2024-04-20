@@ -11,12 +11,20 @@ class KelolaAbsenController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     protected $kelola;
+     protected $absensi;
+
+    public function __construct(Kelola_absensi $kelola, Absensi $absensi)
+    {
+        $this->kelola = $kelola;
+        $this->absensi = $absensi;
+    }
+
     public function index()
     {
 
-
-        $resultKelolaAbsensi = new Kelola_absensi();
-        $dataKelolaAbsensi = $resultKelolaAbsensi->getKelolaAbsensi();
+        $dataKelolaAbsensi = $this->kelola->getKelolaAbsensi();
 
         return view('pages.kelola.index')
             ->with('kelola_absensi', $dataKelolaAbsensi)
@@ -47,8 +55,8 @@ class KelolaAbsenController extends Controller
             'check_out_time' => $check_out_time,
         ];
 
-        $resultKelolaAbsensi = new Kelola_absensi();
-        $resultKelolaAbsensi->setKelolaAbsensi($data);
+     
+        $this->kelola->setKelolaAbsensi($data);
 
         return back();
     }
@@ -61,11 +69,8 @@ class KelolaAbsenController extends Controller
 
         //    get tanggal di kelola absensi
 
-        $resultKelolaAbsensi = new Kelola_absensi();
-        $dataKelolaAbsensi = $resultKelolaAbsensi->getKelolaAbsensiById($id);
-
-        $resultAbsensi = new Absensi();
-        $dataAbsensi = $resultAbsensi->getAbsensiByDate($dataKelolaAbsensi->date);
+        $dataKelolaAbsensi = $this->kelola->getKelolaAbsensiById($id);
+        $dataAbsensi = $$this->absensi->getAbsensiByDate($dataKelolaAbsensi->date);
 
         return view('pages.kelola.show')
             ->with('absensi', $dataAbsensi)
@@ -97,8 +102,7 @@ class KelolaAbsenController extends Controller
      */
     public function destroy(string $id)
     {
-        $resultKelolaAbsensi = new Kelola_absensi();
-        $resultKelolaAbsensi->deleteKelolaAbsensi($id);
+        $this->kelola->deleteKelolaAbsensi($id);
 
         return back();
     }

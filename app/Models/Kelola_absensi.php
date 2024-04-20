@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Kelola_absensi extends Model
 {
     use HasFactory;
-    use HasFactory;
 
     protected $table = 'kelola_absensi';
 
@@ -38,5 +37,8 @@ class Kelola_absensi extends Model
     public function getKelolaAbsensiById($id)
     {
         return Kelola_absensi::find($id);
+    }
+    public function getKelolaAbsensiLastFirst(){
+        return Kelola_absensi::latest()->first();
     }
 }

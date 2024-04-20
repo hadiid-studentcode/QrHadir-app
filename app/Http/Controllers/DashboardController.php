@@ -23,9 +23,23 @@ class DashboardController extends Controller
     {
         $totalGuests = $this->guests->jumlahGuests();
         $totalHadir = $this->absensi->getGuestAbsensiHadir();
-        $kelolaAbsensiDataTerbaru = $this->kelolaAbsensi->getKelolaAbsensi()->last()->first();
+        $kelolaAbsensiDataTerbaru = $this->kelolaAbsensi->getKelolaAbsensiLastFirst();
 
-        $absenBerdasarkanTanggalTerbaru = $this->absensi->getAbsensiByDate($kelolaAbsensiDataTerbaru->date);
+        if (!empty($kelolaAbsensiDataTerbaru)) {
+            $absenBerdasarkanTanggalTerbaru = $this->absensi->getAbsensiByDate($kelolaAbsensiDataTerbaru->date);
+
+            $date = $kelolaAbsensiDataTerbaru->date;
+            $time_first = $kelolaAbsensiDataTerbaru->check_in_time;
+            $time_last = $kelolaAbsensiDataTerbaru->check_out_time;
+        } else {
+            $kelolaAbsensiDataTerbaru = null;
+            $date = null;
+            $time_first = null;
+            $time_last = null;
+            $absenBerdasarkanTanggalTerbaru = [];
+        }
+
+
 
 
 
@@ -34,16 +48,16 @@ class DashboardController extends Controller
             'totalGuests' => $totalGuests,
             'totalHadir' => $totalHadir,
             'kelolaAbsensiData' => $kelolaAbsensiDataTerbaru,
-            'date' => $kelolaAbsensiDataTerbaru->date,
-            'time_first' => $kelolaAbsensiDataTerbaru->check_in_time,
-            'time_last' => $kelolaAbsensiDataTerbaru->check_out_time,
+            'date' => $date,
+            'time_first' => $time_first,
+            'time_last' => $time_last,
             'absenBerdasarkanTanggalTerbaru' => $absenBerdasarkanTanggalTerbaru,
             'active' => 'dashboard',
             'title' => 'Dashboard'
         ];
 
 
-       
+
 
 
 
