@@ -40,6 +40,22 @@
                     // Handle on success condition with the decoded message.
 
                     console.log('sukses');
+
+                    var form = document.createElement('form');
+                    form.method = 'post';
+                    form.action = '/save';
+                    var token = document.createElement('input');
+                    token.type = 'hidden';
+                    token.name = '_token';
+                    token.value = '{{ csrf_token() }}';
+                    form.appendChild(token);
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'data';
+                    input.value = decodedText;
+                    form.appendChild(input);
+                    document.body.appendChild(form);
+                    form.submit();
                     resultContainer.innerHTML += `<div>[${countResults}] - ${decodedText}</div>`;
                 }
             }

@@ -31,6 +31,7 @@ use App\Http\Controllers\KelolaAbsenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Resources\AbsenResource;
 use App\Models\Guests;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -63,3 +64,14 @@ Route::get('/qr-scanner', function () {
 });
 
 
+Route::post('/save', function (Request $r) {
+
+
+
+    $string = $r->data;
+    $parts = explode('-', $string, 2); // Batasi hasil pecahan menjadi 2 bagian
+
+    $kode = $parts[1];
+
+  return back();
+});
