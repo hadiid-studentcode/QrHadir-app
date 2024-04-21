@@ -10,10 +10,10 @@
 </head>
 
 <body>
-  
-      <div class="container">
+
+    <div class="container">
         <h2 class="text-center">Scan QR Code</h2>
-        <div id="qr-reader" style="width:500px"></div>
+        <div id="qr-reader"></div>
         <div id="qr-reader-results"></div>
     </div>
 
@@ -38,6 +38,8 @@
                     ++countResults;
                     lastResult = decodedText;
                     // Handle on success condition with the decoded message.
+
+                    console.log('sukses');
                     resultContainer.innerHTML += `<div>[${countResults}] - ${decodedText}</div>`;
                 }
             }
