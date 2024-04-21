@@ -33,6 +33,13 @@
                      <p>Laporan</p>
                  </a>
              </li>
+
+             <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
+                 <a class="nav-link" href="/qr-scanner">
+                     <i class="material-icons">radio_button_checked</i>
+                     <p>QR Code Scanner</p>
+                 </a>
+             </li>
          </ul>
      </div>
  </div>

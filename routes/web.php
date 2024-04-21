@@ -57,3 +57,9 @@ Route::get('/absensi/{qr_code}', [AbsensiController::class, 'store'])->name('abs
 Route::get('/absensi', [AbsensiController::class, 'index'])->name('absen.index');
 
 
+Route::get('/qr-scanner', function () {
+
+    return view('pages.qr-scanner');
+});
+
+

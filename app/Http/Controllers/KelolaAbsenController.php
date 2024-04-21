@@ -12,8 +12,8 @@ class KelolaAbsenController extends Controller
      * Display a listing of the resource.
      */
 
-     protected $kelola;
-     protected $absensi;
+    protected $kelola;
+    protected $absensi;
 
     public function __construct(Kelola_absensi $kelola, Absensi $absensi)
     {
@@ -55,7 +55,7 @@ class KelolaAbsenController extends Controller
             'check_out_time' => $check_out_time,
         ];
 
-     
+
         $this->kelola->setKelolaAbsensi($data);
 
         return back();
@@ -70,7 +70,9 @@ class KelolaAbsenController extends Controller
         //    get tanggal di kelola absensi
 
         $dataKelolaAbsensi = $this->kelola->getKelolaAbsensiById($id);
-        $dataAbsensi = $$this->absensi->getAbsensiByDate($dataKelolaAbsensi->date);
+
+        $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date);
+
 
         return view('pages.kelola.show')
             ->with('absensi', $dataAbsensi)
