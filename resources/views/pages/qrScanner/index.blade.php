@@ -1,21 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/qrscanner/css/index.css" />
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+
+    <title>GassAbsen | QR Scan</title>
+
+
+
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    </style>
 </head>
 
 <body>
+    <div class="qr-container">
+        <div class="qr-img-container">
 
-    <div class="container">
-        <h2 class="text-center">Scan QR Code</h2>
-        <div id="qr-reader"></div>
-        <div id="qr-reader-results"></div>
+            <div id="qr-reader" style="width: 480px; height: 480px; border-radius: 10px;"></div>
+
+        </div>
+        <div class="qr-content-container">
+            {{-- <h3>Improve your front-end skills by building projects</h3>
+            <p>
+                Scan the QR code to visit Frontend Mentor and take your coding skills
+                to the next level
+            </p> --}}
+
+             {{-- <div id="qr-reader-results"></div> --}}
+        </div>
     </div>
+
 
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
@@ -30,7 +59,7 @@
         }
 
         docReady(function() {
-            var resultContainer = document.getElementById('qr-reader-results');
+            // var resultContainer = document.getElementById('qr-reader-results');
             var lastResult, countResults = 0;
 
             function onScanSuccess(decodedText, decodedResult) {
@@ -56,23 +85,26 @@
                     form.appendChild(input);
                     document.body.appendChild(form);
                     form.submit();
-                    resultContainer.innerHTML += `<div>[${countResults}] - ${decodedText}</div>`;
+                    // resultContainer.innerHTML += `<div>[${countResults}] - ${decodedText}</div>`;
                 }
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
                 "qr-reader", {
                     fps: 10,
-                    qrbox: 250
+                    qrbox: 250,
                 });
+
             html5QrcodeScanner.render(onScanSuccess);
         });
     </script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>
+
+<!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->

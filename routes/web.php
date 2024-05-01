@@ -60,7 +60,7 @@ Route::get('/absensi', [AbsensiController::class, 'index'])->name('absen.index')
 
 Route::get('/qr-scanner', function () {
 
-    return view('pages.qr-scanner');
+    return view('pages.qrScanner.index');
 });
 
 

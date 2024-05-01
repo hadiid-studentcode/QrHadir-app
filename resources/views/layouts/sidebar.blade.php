@@ -35,7 +35,7 @@
              </li>
 
              <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
-                 <a class="nav-link" href="/qr-scanner">
+                 <a class="nav-link" href="/qr-scanner" target="_blank">
                      <i class="material-icons">radio_button_checked</i>
                      <p>QR Code Scanner</p>
                  </a>
