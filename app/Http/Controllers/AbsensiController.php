@@ -4,28 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Absensi;
 use App\Models\Guests;
+use Illuminate\Http\Request;
+
 
 class AbsensiController extends Controller
 {
+
+    protected $guests;
+
+    public function __construct(Guests $guests)
+    {
+        $this->guests = $guests;
+    }
+
     public function index()
     {
 
-        return view('pages.absensi.index');
+        return view('pages.qrScanner.index');
     }
 
-    public function store(string $id)
+    public function store(Request $r)
     {
 
-        $qrcode = $id;
+        $qrcode = $r->data;
 
         // cari guest berdasarkan qrcode
-        $resultGuests = new Guests();
-        $dataGuests = $resultGuests->getGuestsByQrCode($qrcode);
+        $dataGuests = $this->guests->getGuestsByQrCode($qrcode);
 
 
         if ($dataGuests == null) {
             return 'not found';
         } else {
+
+
 
             // tambahkan absensi
             $data = [
@@ -38,8 +49,8 @@ class AbsensiController extends Controller
             $resultAbsensi = new Absensi();
             $resultAbsensi->setAbsensi($data);
 
-            return 'Absensi telah ditambahkan';
-
+            return redirect('/qr-scanner')->with('success', 'Absensi telah ditambahkan');
         }
     }
+
 }

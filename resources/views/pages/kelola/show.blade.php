@@ -9,7 +9,7 @@
 
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Halaman Kelola Absensi</h4>
-                        <p class="card-category">{{ $date }} - {{ $first_time }} - {{ $last_time }}</p>
+                        <p class="card-category">{{ $date }}, {{ $first_time }} Wib s.d {{ $last_time }} Wib</p>
 
                     </div>
                     <div class="card-body">

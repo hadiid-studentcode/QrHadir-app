@@ -55,23 +55,32 @@ Route::resource('/kelola-absensi', KelolaAbsenController::class);
 // absensi
 Route::get('/absensi/{qr_code}', [AbsensiController::class, 'store'])->name('absen.store');
 
-Route::get('/absensi', [AbsensiController::class, 'index'])->name('absen.index');
+Route::get('/qr-scanner', [AbsensiController::class, 'index'])->name('absen.index');
 
 
-Route::get('/qr-scanner', function () {
+// Route::get('/qr-scanner', function () {
 
-    return view('pages.qrScanner.index');
-});
+//     return view('pages.qrScanner.index');
+// });
+
+Route::post('/save', [AbsensiController::class, 'store'])->name('absen.store');
+
+// Route::post('/save', function (Request $r) {
 
 
-Route::post('/save', function (Request $r) {
+
+//     $string = $r->data;
+//     $parts = explode('-', $string, 2); // Batasi hasil pecahan menjadi 2 bagian
+
+//     $kode = $parts[1];
 
 
 
-    $string = $r->data;
-    $parts = explode('-', $string, 2); // Batasi hasil pecahan menjadi 2 bagian
+//     // get id guest by kode
+//     $resultGuests = new Guests();
+//     $dataGuests = $resultGuests->getGuestsByQrCode($r->data);
+//     dd($dataGuests->id);
 
-    $kode = $parts[1];
 
-  return back();
-});
+//     return back();
+// });
