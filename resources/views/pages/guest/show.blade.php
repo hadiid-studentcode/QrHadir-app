@@ -2,13 +2,15 @@
 
 @section('main')
     <div class="row">
+            <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
         <div class="col-md-4">
 
+            
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-avatar">
-                    <div id="qrcode-2"></div>
+                    <div id="canvas" style="text-align: center ; padding: 30px"></div>
                 </div>
                 <div class="card-body">
                     <h6 class="card-category">{{ $guest->delegasi }}</h6>
@@ -31,18 +33,29 @@
 
 
 
+  <script type="text/javascript">
+        const qrCode = new QRCodeStyling({
+            width: 200,
+            height: 200,
+            type: "png",
+            data: "{{ $guest->link }}{{ $guest->qr_code }}",
+            image: "",
+            dotsOptions: {
+                color: "#000000",
+                type: "rounded",
+            },
+            backgroundOptions: {
+                color: "#ffffff",
 
-
-    <script type="text/javascript">
-        var qrcode = new QRCode(document.getElementById("qrcode-2"), {
-            text: "{{ $guest->link }}{{ $guest->qr_code }}",
-            width: 400,
-            height: 400,
-            colorDark: "#000000",
+                
+            },
+            imageOptions: {
+                crossOrigin: "anonymous",
+                margin: 10
+            }
         });
 
-        function download() {
-
-        }
+        qrCode.append(document.getElementById("canvas"));
+        // qrCode.download({ name: "qr", extension: "png" });
     </script>
 @endsection

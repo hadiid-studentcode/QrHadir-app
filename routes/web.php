@@ -53,7 +53,7 @@ Route::get('/cetak', [GuestController::class, 'cetak'])->name('guests.cetak');
 Route::resource('/kelola-absensi', KelolaAbsenController::class);
 
 // absensi
-Route::get('/absensi/{qr_code}', [AbsensiController::class, 'store'])->name('absen.store');
+// Route::get('/absensi/{qr_code}', [AbsensiController::class, 'store'])->name('absen.store');
 
 Route::get('/qr-scanner', [AbsensiController::class, 'index'])->name('absen.index');
 
@@ -84,3 +84,11 @@ Route::post('/save', [AbsensiController::class, 'store'])->name('absen.store');
 
 //     return back();
 // });
+
+
+Route::get('/hasing', function () {
+
+$test = hash('crc32', 'hadiid andri yulison');
+
+dd($test);
+});

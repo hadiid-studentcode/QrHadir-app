@@ -32,8 +32,12 @@ class GuestController extends Controller
         $dataGuest = $this->guests->findOrFail($id);
 
         if (empty($dataGuest->qr_code)) {
+            $dataQR = hash('crc32', 'hadiid andri yulison');
             // Menggunakan Eloquent untuk update, lebih aman dan praktis
-            $dataGuest->qr_code = $dataGuest->id . '-' . Hash::make($dataGuest->nama);
+            $dataGuest->qr_code = $dataGuest->id . '-' .$dataQR;
+
+
+
             $dataGuest->save(); // Menyimpan perubahan ke database
         }
 

@@ -28,6 +28,10 @@ class AbsensiController extends Controller
 
         $qrcode = $r->data;
 
+        
+
+        dd($qrcode);
+
         // cari guest berdasarkan qrcode
         $dataGuests = $this->guests->getGuestsByQrCode($qrcode);
 
