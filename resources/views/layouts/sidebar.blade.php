@@ -27,12 +27,12 @@
                      <p>Kelola Absensi</p>
                  </a>
              </li>
-             <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
+             {{-- <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
                  <a class="nav-link" href="/laporan">
                      <i class="material-icons">library_books</i>
                      <p>Laporan</p>
                  </a>
-             </li>
+             </li> --}}
 
              <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
                  <a class="nav-link" href="/qr-scanner" target="_blank">

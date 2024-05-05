@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Absensi;
 use App\Models\Guests;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -28,9 +29,8 @@ class AbsensiController extends Controller
 
         $qrcode = $r->data;
 
-        
 
-        dd($qrcode);
+
 
         // cari guest berdasarkan qrcode
         $dataGuests = $this->guests->getGuestsByQrCode($qrcode);
@@ -45,16 +45,32 @@ class AbsensiController extends Controller
             // tambahkan absensi
             $data = [
                 'id_guests' => $dataGuests->id,
-                'date' => date('Y-m-d'),
-                'time' => date('H:i:s'),
+                'date' => Carbon::now('Asia/Jakarta')->format('Y-m-d'),
+                'time' => Carbon::now('Asia/Jakarta')->format('H:i:s'),
                 'status' => 'Hadir',
             ];
 
-            $resultAbsensi = new Absensi();
-            $resultAbsensi->setAbsensi($data);
 
-            return redirect('/qr-scanner')->with('success', 'Absensi telah ditambahkan');
+            // kondisi jika data sudah masuk dan tidak duplikat
+            $absensi = Absensi::where('id_guests', $dataGuests->id)->first();
+
+            try {
+                if ($absensi != null) {
+
+                    return redirect('/qr-scanner')->with('warning', 'Data Sudah Ada');
+                } else {
+
+
+                    $resultAbsensi = new Absensi();
+                    $resultAbsensi->setAbsensi($data);
+                    return redirect('/qr-scanner')->with('success', 'Absensi telah ditambahkan');
+
+                }
+            } catch (\Throwable $th) {
+                return redirect('/qr-scanner')->with('warning', 'Terjadi Kesalahan');
+            }
+
+
         }
     }
-
 }

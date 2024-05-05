@@ -1,16 +1,20 @@
 @extends('layouts.main')
 
 @section('main')
+
+
     <div class="row">
-            <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
         <div class="col-md-4">
 
-            
+
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-avatar">
-                    <div id="canvas" style="text-align: center ; padding: 30px"></div>
+                    <div class="sqrcode" style="text-align: center;" ></div>
+                    <div class="qrcode" style="text-align: center;padding: 50px;margin: 30px" onclick="download()"></div>
+
                 </div>
                 <div class="card-body">
                     <h6 class="card-category">{{ $guest->delegasi }}</h6>
@@ -33,29 +37,20 @@
 
 
 
-  <script type="text/javascript">
-        const qrCode = new QRCodeStyling({
-            width: 200,
-            height: 200,
-            type: "png",
-            data: "{{ $guest->link }}{{ $guest->qr_code }}",
-            image: "",
-            dotsOptions: {
-                color: "#000000",
-                type: "rounded",
-            },
-            backgroundOptions: {
-                color: "#ffffff",
+    <script>
+        // Script.js 
+        // create a new QRCode instance 
+        let qrcode = new QRCode(
+            document.querySelector(".qrcode")
+        );
 
-                
-            },
-            imageOptions: {
-                crossOrigin: "anonymous",
-                margin: 10
-            }
-        });
+        // Initial QR code generation 
+        // with a default message 
+        qrcode.makeCode("{{ $guest->link }}{{ $guest->qr_code }}");
 
-        qrCode.append(document.getElementById("canvas"));
-        // qrCode.download({ name: "qr", extension: "png" });
+
+
+        // Function to generate QR 
+        // code based on user input 
     </script>
 @endsection

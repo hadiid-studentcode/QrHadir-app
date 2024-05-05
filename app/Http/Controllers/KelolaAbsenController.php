@@ -71,6 +71,7 @@ class KelolaAbsenController extends Controller
 
         $dataKelolaAbsensi = $this->kelola->getKelolaAbsensiById($id);
 
+
         $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date);
 
 
