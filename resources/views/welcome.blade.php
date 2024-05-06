@@ -226,7 +226,7 @@ img{
     <div class="form">
         <img src="https://img.freepik.com/free-vector/welcome-word-flat-cartoon-people-characters_81522-4207.jpg?w=1380&t=st=1711178574~exp=1711179174~hmac=263fd476dfcb885a32b8190fabd5ab941a7a9a58aec05ac0725f88c68f22acb6" alt="login" class="form__img">
 
-        <form action="" class="form__content">
+        <form action="/dashboard" class="form__content">
     <h1 class="form__title">Login Gass Absen</h1>
 
     <div class="form__div form__div-one">

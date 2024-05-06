@@ -1,20 +1,16 @@
 @extends('layouts.main')
 
 @section('main')
-
-
     <div class="row">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+            <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
         <div class="col-md-4">
 
-
+            
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-avatar">
-                    <div class="sqrcode" style="text-align: center;" ></div>
-                    <div class="qrcode" style="text-align: center;padding: 50px;margin: 30px" onclick="download()"></div>
-
+                    <div id="canvas" style="text-align: center ; padding: 30px"></div>
                 </div>
                 <div class="card-body">
                     <h6 class="card-category">{{ $guest->delegasi }}</h6>
@@ -25,6 +21,7 @@
                         ratione porro odio ipsa similique!
                     </p>
                     <a href="/guests" class="btn btn-primary btn-round">Kembali</a>
+                    <button class="btn btn-primary btn-round" id="download" >Download</button>
 
                 </div>
             </div>
@@ -37,20 +34,32 @@
 
 
 
-    <script>
-        // Script.js 
-        // create a new QRCode instance 
-        let qrcode = new QRCode(
-            document.querySelector(".qrcode")
-        );
+  <script type="text/javascript">
+        const qrCode = new QRCodeStyling({
+            width: 200,
+            height: 200,
+            type: "png",
+            data: "{{ $guest->link }}{{ $guest->qr_code }}",
+            image: "",
+            dotsOptions: {
+                color: "#000000",
+                type: "rounded",
+            },
+            backgroundOptions: {
+                color: "#ffffff",
 
-        // Initial QR code generation 
-        // with a default message 
-        qrcode.makeCode("{{ $guest->link }}{{ $guest->qr_code }}");
+                
+            },
+            imageOptions: {
+                crossOrigin: "anonymous",
+                margin: 10
+            }
+        });
 
-
-
-        // Function to generate QR 
-        // code based on user input 
+        qrCode.append(document.getElementById("canvas"));
+        const download = document.getElementById('download');
+        download.addEventListener('click',function test(){
+        qrCode.download({ name: "qr", extension: "png" });
+        })
     </script>
 @endsection

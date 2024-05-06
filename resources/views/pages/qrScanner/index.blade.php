@@ -119,7 +119,7 @@
 
                 var form = document.createElement('form');
                 form.method = 'post';
-                form.action = '/save';
+                form.action = '{{ url('/save') }}';
                 var token = document.createElement('input');
                 token.type = 'hidden';
                 token.name = '_token';

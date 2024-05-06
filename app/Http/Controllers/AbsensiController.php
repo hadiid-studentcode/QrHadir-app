@@ -27,6 +27,7 @@ class AbsensiController extends Controller
     public function store(Request $r)
     {
 
+
         $qrcode = $r->data;
 
 
