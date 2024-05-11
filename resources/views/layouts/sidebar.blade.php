@@ -27,17 +27,19 @@
                      <p>Kelola Absensi</p>
                  </a>
              </li>
-             {{-- <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
-                 <a class="nav-link" href="/laporan">
-                     <i class="material-icons">library_books</i>
-                     <p>Laporan</p>
-                 </a>
-             </li> --}}
+        
 
              <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
                  <a class="nav-link" href="/qr-scanner" target="_blank">
                      <i class="material-icons">radio_button_checked</i>
                      <p>QR Code Scanner</p>
+                 </a>
+             </li>
+
+              <li class="nav-item {{ $active == 'logout' ? 'active' : '' }} ">
+                 <a class="nav-link" href="/logout">
+                     <i class="material-icons">logout</i>
+                     <p>Logout</p>
                  </a>
              </li>
          </ul>

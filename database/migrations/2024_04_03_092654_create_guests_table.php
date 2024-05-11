@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('delegasi');
             $table->string('link')->nullable();
             $table->string('qr_code')->nullable();
-
             $table->timestamps();
         });
     }
