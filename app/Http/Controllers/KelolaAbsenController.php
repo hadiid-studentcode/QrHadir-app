@@ -67,12 +67,16 @@ class KelolaAbsenController extends Controller
     public function show(string $id)
     {
 
+
         //    get tanggal di kelola absensi
 
         $dataKelolaAbsensi = $this->kelola->getKelolaAbsensiById($id);
 
 
+
         $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date);
+
+        dd($dataAbsensi);
 
 
         return view('pages.kelola.show')

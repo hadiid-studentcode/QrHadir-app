@@ -30,7 +30,7 @@
         
 
              <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
-                 <a class="nav-link" href="/qr-scanner" target="_blank">
+                 <a class="nav-link" href="https://scanqr-dusky.vercel.app/" target="_blank">
                      <i class="material-icons">radio_button_checked</i>
                      <p>QR Code Scanner</p>
                  </a>

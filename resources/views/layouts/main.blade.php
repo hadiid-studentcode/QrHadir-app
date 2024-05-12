@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="dark-edition">
+<body class="">
     <div class="wrapper ">
         @include('layouts.sidebar')
         <div class="main-panel">
