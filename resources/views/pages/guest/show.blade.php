@@ -59,7 +59,7 @@
         qrCode.append(document.getElementById("canvas"));
         const download = document.getElementById('download');
         download.addEventListener('click',function test(){
-        qrCode.download({ name: "qr", extension: "png" });
+        qrCode.download({ name: "{{ $nama }}", extension: "png" });
         })
     </script>
 @endsection

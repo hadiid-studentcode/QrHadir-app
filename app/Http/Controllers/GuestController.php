@@ -28,13 +28,19 @@ class GuestController extends Controller
 
     public function show($id)
     {
+
+        
         // Asumsikan getGuestsById adalah query scope atau metode kustom pada model Guests
         $dataGuest = $this->guests->findOrFail($id);
 
+
+
         if (empty($dataGuest->qr_code)) {
-            $dataQR = hash('crc32', 'hadiid andri yulison');
+            $dataQR = hash('crc32', $dataGuest->nama_lengkap);
             // Menggunakan Eloquent untuk update, lebih aman dan praktis
             $dataGuest->qr_code = $dataGuest->id . '-' .$dataQR;
+
+           
 
 
 
@@ -44,22 +50,27 @@ class GuestController extends Controller
         return view('pages.guest.show', [
             'title' => 'Guest',
             'active' => 'guests',
-            'guest' => $dataGuest
+            'guest' => $dataGuest,
+            'nama' => $dataGuest->nama_lengkap
         ]);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'delegasi' => 'required',
-        ]);
 
-        $this->guests->create([
+
+
+        $data = [
             'nama_lengkap' => $request->nama,
-            'delegasi' => $request->delegasi,
-            // Tambahkan field lain sesuai kebutuhan
-        ]);
+            'perusahaan' => $request->perusahaan,
+            'alamat' => $request->alamat,
+            'kota_asal' => $request->kotaasal,
+            'no_hp_wa'=> $request->nohpwa,
+        ];
+
+
+        $this->guests->create($data);
+
 
         return back()->with('success', 'Data tamu berhasil ditambahkan.');
     }

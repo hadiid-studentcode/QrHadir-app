@@ -13,6 +13,9 @@
         name='viewport' />
     @include('layouts.styles')
 
+
+
+
 </head>
 
 <body class="dark-edition">

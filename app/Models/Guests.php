@@ -11,7 +11,17 @@ class Guests extends Model
 
     protected $table = 'guests';
 
-    protected $fillable = ['nama_lengkap', 'delegasi', 'link', 'qr_code'];
+    protected $fillable = [
+        'nama_lengkap',
+        'perusahaan',
+        'alamat',
+        'kota_asal',
+        'no_hp_wa',
+        'link',
+        'qr_code',
+
+       
+    ];
 
     protected $primaryKey = 'id';
 
@@ -39,11 +49,12 @@ class Guests extends Model
     {
         return Guests::where('qr_code', $qrCode)->first();
     }
-    public function updateGuests($data, $id){
+    public function updateGuests($data, $id)
+    {
         return Guests::where('id', $id)->update($data);
     }
-    public function jumlahGuests(){
+    public function jumlahGuests()
+    {
         return Guests::count();
     }
- 
 }

@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('guests', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('nama_lengkap');
-            $table->string('delegasi');
+            $table->string('perusahaan')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('kota_asal')->nullable();
+            $table->string('no_hp_wa')->nullable();
             $table->string('link')->nullable();
             $table->string('qr_code')->nullable();
             $table->timestamps();

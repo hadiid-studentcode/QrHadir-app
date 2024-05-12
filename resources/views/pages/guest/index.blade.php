@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('main')
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -25,14 +27,29 @@
                                         <div class="mb-3">
                                             <label for="nama" class="form-label text-dark">Nama Lengkap</label>
                                             <input type="text" class="form-control text-dark" id="nama"
-                                                name="nama" required>
+                                                name="nama">
 
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="delegasi" class="form-label text-dark">Delegasi</label>
-                                            <input type="text" class="form-control text-dark" id="delegasi"
-                                                name="delegasi" required>
+                                            <label for="perusahaan" class="form-label text-dark">Perusahaan</label>
+                                            <input type="text" class="form-control text-dark" id="perusahaan"
+                                                name="perusahaan">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="alamat" class="form-label text-dark">Alamat</label>
+                                            <input type="text" class="form-control text-dark" id="alamat"
+                                                name="alamat">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="kotaasal" class="form-label text-dark">Kota Asal</label>
+                                            <input type="text" class="form-control text-dark" id="kotaasal"
+                                                name="kotaasal">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="nohpwa" class="form-label text-dark">No HP/Wa</label>
+                                            <input type="text" class="form-control text-dark" id="nohpwa"
+                                                name="nohpwa">
                                         </div>
 
                                     </div>
@@ -53,7 +70,7 @@
                 </div>
 
                 @foreach (['success', 'error'] as $msg)
-                    @if(session($msg))
+                    @if (session($msg))
                         <div class="alert alert-{{ $msg == 'success' ? 'success' : 'danger' }}" role="alert">
                             {{ session($msg) }}
                         </div>
@@ -62,7 +79,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead class=" text-primary">
                                 <th>
                                     No
@@ -71,8 +88,13 @@
                                     Nama Lengkap
                                 </th>
                                 <th>
-                                    Delegasi
+                                    Perusahaan
                                 </th>
+                                <th>
+                                    Alamat
+                                </th>
+                                <th>Kota Asal</th>
+                                <th>No HP/WA</th>
                                 <th>
                                     Action
                                 </th>
@@ -83,7 +105,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $guest->nama_lengkap }}</td>
-                                        <td>{{ $guest->delegasi }}</td>
+                                        <td>{{ $guest->perusahaan }}</td>
+                                        <td>{{ $guest->alamat }}</td>
+                                        <td>{{ $guest->kota_asal }}</td>
+                                        <td>{{ $guest->no_hp_wa }}</td>
+
                                         <td>
 
                                             <a class="btn btn-info" href="/guests/{{ $guest->id }}">Lihat</a>
@@ -104,11 +130,26 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+
+                            
                         </table>
+
+                            
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+
+                       
+                       
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
+
+
+
+
+
+    
 @endsection
