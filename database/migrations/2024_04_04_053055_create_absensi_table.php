@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->foreignId('kode_absensi')->references('id')->on('guests')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('id_guests');
+            $table->string('kode_absensi')->unique();
+            $table->foreignId('id_guests')->references('id')->on('guests')->onDelete('cascade')->onUpdate('cascade');
             $table->date('date');
             $table->time('time');
             $table->string('status');
