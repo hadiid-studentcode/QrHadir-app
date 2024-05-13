@@ -11,7 +11,8 @@
                     <div class="modal fade" id="tambahAbsensi" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <form action="/kelola-absensi" method="post">
+                            <form action="{{ url('/kelola-absensi') }}" method="post">
+
                                 @csrf
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -75,7 +76,8 @@
                                         <td>{{ $kelola_absen->check_out_time }}</td>
                                         <td>
 
-                                            <form action="/kelola-absensi/{{ $kelola_absen->id }}" method="post">
+                                            <form action="{{ url('/kelola-absensi/' . $kelola_absen->id) }}" method="post">
+
                                                 @csrf
                                                 @method('delete')
 
@@ -83,7 +85,8 @@
                                             </form>
 
 
-                                            <a class="btn btn-info" href="/kelola-absensi/{{ $kelola_absen->id }}">Views</a>
+
+                                            <a class="btn btn-info" href="{{ url('/kelola-absensi/' . $kelola_absen->id) }}">Views</a>
 
 
 

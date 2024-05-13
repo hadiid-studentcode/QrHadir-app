@@ -36,7 +36,7 @@ class GuestController extends Controller
 
 
         if (empty($dataGuest->qr_code)) {
-            $dataQR = hash('crc32', $dataGuest->nama_lengkap);
+            $dataQR = hash('crc32', $dataGuest->nama_customer);
             // Menggunakan Eloquent untuk update, lebih aman dan praktis
             $dataGuest->qr_code = $dataGuest->id . '-' .$dataQR;
 
@@ -51,7 +51,7 @@ class GuestController extends Controller
             'title' => 'Guest',
             'active' => 'guests',
             'guest' => $dataGuest,
-            'nama' => $dataGuest->nama_lengkap
+            'nama' => $dataGuest->nama_customer
         ]);
     }
 
@@ -61,12 +61,12 @@ class GuestController extends Controller
 
 
         $data = [
-            'nama_lengkap' => $request->nama,
-            'perusahaan' => $request->perusahaan,
-            'alamat' => $request->alamat,
-            'kota_asal' => $request->kotaasal,
-            'no_hp_wa'=> $request->nohpwa,
+            'nama_customer' => $request->nama_customer,
+            'kota' => $request->kota,
+            'segmen' => $request->segmen,
+           
         ];
+
 
 
         $this->guests->create($data);

@@ -12,11 +12,9 @@ class Guests extends Model
     protected $table = 'guests';
 
     protected $fillable = [
-        'nama_lengkap',
-        'perusahaan',
-        'alamat',
-        'kota_asal',
-        'no_hp_wa',
+        'nama_customer',
+        'kota',
+        'segmen',
         'link',
         'qr_code',
 

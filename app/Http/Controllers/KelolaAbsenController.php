@@ -74,9 +74,9 @@ class KelolaAbsenController extends Controller
 
 
 
+
         $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date);
 
-        dd($dataAbsensi);
 
 
         return view('pages.kelola.show')

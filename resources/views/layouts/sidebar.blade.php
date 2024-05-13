@@ -16,13 +16,15 @@
                  </a>
              </li>
              <li class="nav-item {{ $active == 'guests' ? 'active' : '' }} ">
-                 <a class="nav-link" href="/guests">
+                 <a class="nav-link" href="{{ url('/guests') }}">
                      <i class="material-icons">person</i>
                      <p>Manajemen Guests</p>
                  </a>
              </li>
              <li class="nav-item {{ $active == 'kelola' ? 'active' : '' }} ">
-                 <a class="nav-link" href="/kelola-absensi">
+
+
+                 <a class="nav-link" href="{{ url('/kelola-absensi') }}">
                      <i class="material-icons">content_paste</i>
                      <p>Kelola Absensi</p>
                  </a>

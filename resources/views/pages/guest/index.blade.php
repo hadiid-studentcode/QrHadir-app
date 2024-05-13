@@ -14,7 +14,7 @@
                     <div class="modal fade" id="tambahGuest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <form action="/guests" method="post">
+                            <form action="{{ url('/guests') }}" method="post">
                                 @csrf
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -25,32 +25,24 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="nama" class="form-label text-dark">Nama Lengkap</label>
-                                            <input type="text" class="form-control text-dark" id="nama"
-                                                name="nama">
+                                            <label for="nama_customer" class="form-label text-dark">Nama Lengkap</label>
+                                            <input type="text" class="form-control text-dark" id="nama_customer"
+                                                name="nama_customer">
 
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="perusahaan" class="form-label text-dark">Perusahaan</label>
-                                            <input type="text" class="form-control text-dark" id="perusahaan"
-                                                name="perusahaan">
+                                            <label for="kota" class="form-label text-dark">Kota</label>
+                                            <input type="text" class="form-control text-dark" id="kota"
+                                                name="kota">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="alamat" class="form-label text-dark">Alamat</label>
-                                            <input type="text" class="form-control text-dark" id="alamat"
-                                                name="alamat">
+                                            <label for="segmen" class="form-label text-dark">Segmen</label>
+                                            <input type="text" class="form-control text-dark" id="segmen"
+                                                name="segmen">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="kotaasal" class="form-label text-dark">Kota Asal</label>
-                                            <input type="text" class="form-control text-dark" id="kotaasal"
-                                                name="kotaasal">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="nohpwa" class="form-label text-dark">No HP/Wa</label>
-                                            <input type="text" class="form-control text-dark" id="nohpwa"
-                                                name="nohpwa">
-                                        </div>
+                                       
+                                        
 
                                     </div>
                                     <div class="modal-footer">
@@ -85,16 +77,15 @@
                                     No
                                 </th>
                                 <th>
-                                    Nama Lengkap
+                                    Nama Customer
                                 </th>
                                 <th>
-                                    Perusahaan
+                                    Kota
                                 </th>
                                 <th>
-                                    Alamat
+                                    Segmen
                                 </th>
-                                <th>Kota Asal</th>
-                                <th>No HP/WA</th>
+                        
                                 <th>
                                     Action
                                 </th>
@@ -104,20 +95,17 @@
                                 @foreach ($guests as $guest)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $guest->nama_lengkap }}</td>
-                                        <td>{{ $guest->perusahaan }}</td>
-                                        <td>{{ $guest->alamat }}</td>
-                                        <td>{{ $guest->kota_asal }}</td>
-                                        <td>{{ $guest->no_hp_wa }}</td>
+                                        <td>{{ $guest->nama_customer }}</td>
+                                        <td>{{ $guest->kota }}</td>
+                                        <td>{{ $guest->segmen }}</td>
+                                       
 
                                         <td>
 
-                                            <a class="btn btn-info" href="/guests/{{ $guest->id }}">Lihat</a>
+                                            <a class="btn btn-info" href="{{ url('/guests/' . $guest->id) }}">Lihat</a>
 
 
-
-
-                                            <form action="/guests/{{ $guest->id }}" method="post">
+                                            <form action="{{ url('/guests/' . $guest->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
 

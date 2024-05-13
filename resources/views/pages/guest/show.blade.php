@@ -14,13 +14,13 @@
                 </div>
                 <div class="card-body">
                     <h6 class="card-category">{{ $guest->delegasi }}</h6>
-                    <h4 class="card-title">{{ $guest->nama_lengkap }}</h4>
+                    <h4 class="card-title">{{ $guest->nama_customer }}</h4>
                     <p class="card-description">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ducimus tempora autem laudantium quod,
                         veritatis facere perferendis perspiciatis esse optio harum iste, consectetur exercitationem aliquid
                         ratione porro odio ipsa similique!
                     </p>
-                    <a href="/guests" class="btn btn-primary btn-round">Kembali</a>
+                    <a href="{{ url('/guests') }}" class="btn btn-primary btn-round">Kembali</a>
                     <button class="btn btn-primary btn-round" id="download" >Download</button>
 
                 </div>

@@ -28,7 +28,7 @@
                                     @foreach ($absensi as $absen)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $absen->nama_lengkap }}</td>
+                                            <td>{{ $absen->nama_customer }}</td>
                                             <td>{{ $absen->date }}</td>
                                             <td>{{ $absen->time }}</td>
                                             <td>{{ $absen->status }}</td>
