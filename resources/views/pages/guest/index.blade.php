@@ -1,18 +1,41 @@
 @extends('layouts.main')
 
 @section('main')
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#tambahGuest">Tambah</button>
+
+
+                <div class="col-md-12">
+                    <button class="btn btn-primary" type="button" data-toggle="modal"
+                        data-target="#tambahGuest">Tambah</button>
+
+                </div>
+
+                <div class="col-md-12">
+                    <div class="input-group justify-content-end">
+                        <form class="navbar-form " action="{{ url('/guests/create') }}" method="get">
+                            <div class="input-group no-border">
+                                <input type="text" name="search" class="form-control"
+                                    placeholder="Cari nama customer atau kota" value="{{ isset($search) ? $search : '' }}">
+                                <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                                    <i class="material-icons">search</i>
+                                    <div class="ripple-container"></div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
                 <div class="card">
 
 
                     <!-- Modal -->
-                    <div class="modal fade" id="tambahGuest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
+                    <div class="modal fade" id="tambahGuest" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <form action="{{ url('/guests') }}" method="post">
                                 @csrf
@@ -41,8 +64,8 @@
                                             <input type="text" class="form-control text-dark" id="segmen"
                                                 name="segmen">
                                         </div>
-                                       
-                                        
+
+
 
                                     </div>
                                     <div class="modal-footer">
@@ -71,6 +94,9 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
+
+                      
+
                         <table class="table" id="myTable">
                             <thead class=" text-primary">
                                 <th>
@@ -85,59 +111,85 @@
                                 <th>
                                     Segmen
                                 </th>
-                        
+
                                 <th>
                                     Action
                                 </th>
 
                             </thead>
                             <tbody>
-                                @foreach ($guests as $guest)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $guest->nama_customer }}</td>
-                                        <td>{{ $guest->kota }}</td>
-                                        <td>{{ $guest->segmen }}</td>
-                                       
-
-                                        <td>
-
-                                            <a class="btn btn-info" href="{{ url('/guests/' . $guest->id) }}">Lihat</a>
 
 
-                                            <form action="{{ url('/guests/' . $guest->id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
 
-                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                @if (isset($guestsSearch))
+                                    @foreach ($guestsSearch as $gs)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $gs->nama_customer }}</td>
+                                            <td>{{ $gs->kota }}</td>
+                                            <td>{{ $gs->segmen }}</td>
 
-                                            </form>
+
+                                            <td>
+
+                                                <a class="btn btn-info" href="{{ url('/guests/' . $gs->id) }}">Lihat</a>
 
 
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                <form action="{{ url('/guests/' . $gs->id) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+
+                                                </form>
+
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    @foreach ($guests as $guest)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $guest->nama_customer }}</td>
+                                            <td>{{ $guest->kota }}</td>
+                                            <td>{{ $guest->segmen }}</td>
+
+
+                                            <td>
+
+                                                <a class="btn btn-info" href="{{ url('/guests/' . $guest->id) }}">Lihat</a>
+
+
+                                                <form action="{{ url('/guests/' . $guest->id) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+
+                                                </form>
+
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+
                             </tbody>
 
-                            
+
                         </table>
 
-                            
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
 
-                       
-                       
+
+
                     </div>
+
+
                 </div>
+
             </div>
         </div>
 
     </div>
-
-
-
-
-
-    
 @endsection

@@ -28,6 +28,7 @@ Route::resource('/dashboard', DashboardController::class);
 // guest
 
 Route::resource('/guests', GuestController::class);
+
 Route::get('/cetak', [GuestController::class, 'cetak'])->name('guests.cetak');
 
 // kelola absensi

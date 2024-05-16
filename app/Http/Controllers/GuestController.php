@@ -17,7 +17,7 @@ class GuestController extends Controller
 
     public function index()
     {
-        $dataGuest = $this->guests->all();
+        $dataGuest = $this->guests->GetGuests();
 
         return view('pages.guest.index', [
             'guests' => $dataGuest,
@@ -32,6 +32,7 @@ class GuestController extends Controller
         
         // Asumsikan getGuestsById adalah query scope atau metode kustom pada model Guests
         $dataGuest = $this->guests->findOrFail($id);
+
 
 
 
@@ -51,7 +52,9 @@ class GuestController extends Controller
             'title' => 'Guest',
             'active' => 'guests',
             'guest' => $dataGuest,
-            'nama' => $dataGuest->nama_customer
+            'nama' => $dataGuest->nama_customer,
+            'kota' => $dataGuest->kota,
+            'segmen' => $dataGuest->segmen,
         ]);
     }
 
@@ -69,7 +72,13 @@ class GuestController extends Controller
 
 
 
+
         $this->guests->create($data);
+
+
+
+
+        
 
 
         return back()->with('success', 'Data tamu berhasil ditambahkan.');
@@ -86,6 +95,20 @@ class GuestController extends Controller
         } catch (\Exception $e) {
             return back();
         }
+    }
+
+    public function create(Request $r){
+      $search = $r->search;
+
+      $guestsSearch = $this->guests->search($search);
+
+     return view('pages.guest.index')
+     ->with('guestsSearch', $guestsSearch)
+     ->with('title', 'Guest')
+     ->with('active', 'guests')
+     ->with('search', $search)
+     ;
+
     }
 
     // Tambahkan metode lain sesuai kebutuhan

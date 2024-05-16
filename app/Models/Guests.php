@@ -55,4 +55,8 @@ class Guests extends Model
     {
         return Guests::count();
     }
+    public function search($data){
+        return Guests::Where('nama_customer', 'ilike', '%' . $data . '%')->orwhere('kota', 'ilike', '%' . $data . '%')->get();
+        
+    }
 }
