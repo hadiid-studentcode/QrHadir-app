@@ -38,7 +38,9 @@ class Kelola_absensi extends Model
     {
         return Kelola_absensi::find($id)->first();
     }
-    public function getKelolaAbsensiLastFirst(){
+
+    public function getKelolaAbsensiLastFirst()
+    {
         return Kelola_absensi::latest()->first();
     }
 }

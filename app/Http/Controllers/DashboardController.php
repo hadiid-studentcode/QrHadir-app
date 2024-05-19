@@ -9,7 +9,9 @@ use App\Models\Kelola_absensi;
 class DashboardController extends Controller
 {
     protected $guests;
+
     protected $absensi;
+
     protected $kelolaAbsensi;
 
     public function __construct(Guests $guests, Absensi $absensi, Kelola_absensi $kelolaAbsensi)
@@ -25,7 +27,7 @@ class DashboardController extends Controller
         $totalHadir = $this->absensi->getGuestAbsensiHadir();
         $kelolaAbsensiDataTerbaru = $this->kelolaAbsensi->getKelolaAbsensiLastFirst();
 
-        if (!empty($kelolaAbsensiDataTerbaru)) {
+        if (! empty($kelolaAbsensiDataTerbaru)) {
             $absenBerdasarkanTanggalTerbaru = $this->absensi->getAbsensiByDate($kelolaAbsensiDataTerbaru->date);
 
             $date = $kelolaAbsensiDataTerbaru->date;
@@ -39,11 +41,6 @@ class DashboardController extends Controller
             $absenBerdasarkanTanggalTerbaru = [];
         }
 
-
-
-
-
-
         $data = [
             'totalGuests' => $totalGuests,
             'totalHadir' => $totalHadir,
@@ -53,13 +50,8 @@ class DashboardController extends Controller
             'time_last' => $time_last,
             'absenBerdasarkanTanggalTerbaru' => $absenBerdasarkanTanggalTerbaru,
             'active' => 'dashboard',
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
         ];
-
-
-
-
-
 
         return view('pages.dashboard.index', $data);
     }

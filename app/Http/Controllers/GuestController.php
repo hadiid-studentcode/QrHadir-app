@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Guests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class GuestController extends Controller
 {
@@ -22,28 +21,20 @@ class GuestController extends Controller
         return view('pages.guest.index', [
             'guests' => $dataGuest,
             'title' => 'Guest',
-            'active' => 'guests'
+            'active' => 'guests',
         ]);
     }
 
     public function show($id)
     {
 
-        
         // Asumsikan getGuestsById adalah query scope atau metode kustom pada model Guests
         $dataGuest = $this->guests->findOrFail($id);
-
-
-
 
         if (empty($dataGuest->qr_code)) {
             $dataQR = hash('crc32', $dataGuest->nama_customer);
             // Menggunakan Eloquent untuk update, lebih aman dan praktis
-            $dataGuest->qr_code = $dataGuest->id . '-' .$dataQR;
-
-           
-
-
+            $dataGuest->qr_code = $dataGuest->id.'-'.$dataQR;
 
             $dataGuest->save(); // Menyimpan perubahan ke database
         }
@@ -61,25 +52,19 @@ class GuestController extends Controller
     public function store(Request $request)
     {
 
+        $jumlahGuests = $this->guests->jumlahGuests();
 
+        $id = $jumlahGuests + 1;
 
         $data = [
+            'id' => $id,
             'nama_customer' => $request->nama_customer,
             'kota' => $request->kota,
             'segmen' => $request->segmen,
-           
+
         ];
 
-
-
-
         $this->guests->create($data);
-
-
-
-
-        
-
 
         return back()->with('success', 'Data tamu berhasil ditambahkan.');
     }
@@ -97,18 +82,28 @@ class GuestController extends Controller
         }
     }
 
-    public function create(Request $r){
-      $search = $r->search;
+    public function create(Request $r)
+    {
+        $search = $r->search;
 
-      $guestsSearch = $this->guests->search($search);
+        $guestsSearch = $this->guests->search($search);
 
-     return view('pages.guest.index')
-     ->with('guestsSearch', $guestsSearch)
-     ->with('title', 'Guest')
-     ->with('active', 'guests')
-     ->with('search', $search)
-     ;
+        return view('pages.guest.index')
+            ->with('guestsSearch', $guestsSearch)
+            ->with('title', 'Guest')
+            ->with('active', 'guests')
+            ->with('search', $search);
+    }
 
+    public function nonQR()
+    {
+
+        $dataGuest = $this->guests->GetGuestsNonQR();
+
+        return view('pages.guest.index')
+            ->with('title', 'Guest')
+            ->with('active', 'guests')
+            ->with('guests_NonQR', $dataGuest);
     }
 
     // Tambahkan metode lain sesuai kebutuhan

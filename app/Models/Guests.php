@@ -12,13 +12,13 @@ class Guests extends Model
     protected $table = 'guests';
 
     protected $fillable = [
+        'id',
         'nama_customer',
         'kota',
         'segmen',
         'link',
         'qr_code',
 
-       
     ];
 
     protected $primaryKey = 'id';
@@ -26,6 +26,15 @@ class Guests extends Model
     public function GetGuests()
     {
         return Guests::all();
+        // return Guests::whereNull('qr_code')->get();
+
+    }
+
+    public function GetGuestsNonQR()
+    {
+        // return Guests::all();
+        return Guests::whereNull('qr_code')->get();
+
     }
 
     public function setGuests($data)
@@ -47,16 +56,20 @@ class Guests extends Model
     {
         return Guests::where('qr_code', $qrCode)->first();
     }
+
     public function updateGuests($data, $id)
     {
         return Guests::where('id', $id)->update($data);
     }
+
     public function jumlahGuests()
     {
         return Guests::count();
     }
-    public function search($data){
-        return Guests::Where('nama_customer', 'ilike', '%' . $data . '%')->orwhere('kota', 'ilike', '%' . $data . '%')->get();
-        
+
+    public function search($data)
+    {
+        return Guests::Where('nama_customer', 'ilike', '%'.$data.'%')->orwhere('kota', 'ilike', '%'.$data.'%')->get();
+
     }
 }

@@ -20,7 +20,7 @@
                         veritatis facere perferendis perspiciatis esse optio harum iste, consectetur exercitationem aliquid
                         ratione porro odio ipsa similique!
                     </p>
-                    <a href="{{ url('/guests') }}" class="btn btn-primary btn-round">Kembali</a>
+                    <a href="{{ url()->previous() }}" class="btn btn-primary btn-round">Kembali</a>
                     <button class="btn btn-primary btn-round" id="download" >Download</button>
 
                 </div>

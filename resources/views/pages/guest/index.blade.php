@@ -10,6 +10,19 @@
                     <button class="btn btn-primary" type="button" data-toggle="modal"
                         data-target="#tambahGuest">Tambah</button>
 
+                        @if(isset($guests_NonQR))
+
+                      <a class="btn btn-success" href="{{ url('/guests') }}">Kembali ke Guest</a>
+
+                      @else
+                     
+                       <a class="btn btn-info" href="{{ url('/guests/show/non-generate-qr') }}">Tampilkan Data Belum di Generate QR Code</a>
+
+                        @endif
+
+                        
+                        
+
                 </div>
 
                 <div class="col-md-12">
@@ -95,7 +108,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
 
-                      
+
 
                         <table class="table" id="myTable">
                             <thead class=" text-primary">
@@ -111,6 +124,9 @@
                                 <th>
                                     Segmen
                                 </th>
+                                <th>
+                                    QR_Code
+                                </th>
 
                                 <th>
                                     Action
@@ -119,7 +135,35 @@
                             </thead>
                             <tbody>
 
+                                @if(isset($guests_NonQR))
+                                  @foreach ($guests_NonQR as $gnq)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $gnq->nama_customer }}</td>
+                                            <td>{{ $gnq->kota }}</td>
+                                            <td>{{ $gnq->segmen }}</td>
+                                            <td>{{ $gnq->qr_code }}</td>
 
+
+                                            <td>
+
+                                                <a class="btn btn-info" href="{{ url('/guests/' . $gnq->id) }}">Lihat</a>
+
+
+                                                {{-- <form action="{{ url('/guests/' . $gs->id) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+
+                                                </form> --}}
+
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                @endif
 
                                 @if (isset($guestsSearch))
                                     @foreach ($guestsSearch as $gs)
@@ -128,6 +172,7 @@
                                             <td>{{ $gs->nama_customer }}</td>
                                             <td>{{ $gs->kota }}</td>
                                             <td>{{ $gs->segmen }}</td>
+                                            <td>{{ $gs->qr_code }}</td>
 
 
                                             <td>
@@ -135,25 +180,28 @@
                                                 <a class="btn btn-info" href="{{ url('/guests/' . $gs->id) }}">Lihat</a>
 
 
-                                                <form action="{{ url('/guests/' . $gs->id) }}" method="post">
+                                                {{-- <form action="{{ url('/guests/' . $gs->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
 
                                                     <button type="submit" class="btn btn-danger">Hapus</button>
 
-                                                </form>
+                                                </form> --}}
 
 
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
+                                @if(isset($guests))
                                     @foreach ($guests as $guest)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $guest->nama_customer }}</td>
                                             <td>{{ $guest->kota }}</td>
                                             <td>{{ $guest->segmen }}</td>
+                                            <td>{{ $guest->qr_code }}</td>
+
 
 
                                             <td>
@@ -161,18 +209,19 @@
                                                 <a class="btn btn-info" href="{{ url('/guests/' . $guest->id) }}">Lihat</a>
 
 
-                                                <form action="{{ url('/guests/' . $guest->id) }}" method="post">
+                                                {{-- <form action="{{ url('/guests/' . $guest->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
 
                                                     <button type="submit" class="btn btn-danger">Hapus</button>
 
-                                                </form>
+                                                </form> --}}
 
 
                                             </td>
                                         </tr>
                                     @endforeach
+                                    @endif
                                 @endif
 
                             </tbody>

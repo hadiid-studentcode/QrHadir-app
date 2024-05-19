@@ -34,6 +34,7 @@ class Absensi extends Model
             ->join('guests', 'absensi.id_guests', '=', 'guests.id')
             ->get();
     }
+
     public function getGuestAbsensiHadir()
     {
         return Absensi::where('status', 'hadir')->count();
