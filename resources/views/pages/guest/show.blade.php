@@ -13,8 +13,8 @@
                     <div id="canvas" style="text-align: center ; padding: 30px"></div>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-category">{{ $guest->delegasi }}</h6>
-                    <h4 class="card-title">{{ $guest->nama_customer }}</h4>
+                    <h6 class="card-category">{{ $guest->kota }}</h6>
+                    <h4 class="card-title">{{ $guest->nama_customer }}-{{ $guest->kota }}</h4>
                     <p class="card-description">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ducimus tempora autem laudantium quod,
                         veritatis facere perferendis perspiciatis esse optio harum iste, consectetur exercitationem aliquid

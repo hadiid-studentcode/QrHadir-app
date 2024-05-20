@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $kelolaAbsensiDataTerbaru = $this->kelolaAbsensi->getKelolaAbsensiLastFirst();
 
         if (! empty($kelolaAbsensiDataTerbaru)) {
-            $absenBerdasarkanTanggalTerbaru = $this->absensi->getAbsensiByDate($kelolaAbsensiDataTerbaru->date);
+            // $absenBerdasarkanTanggalTerbaru = $this->absensi->getAbsensiByDate($kelolaAbsensiDataTerbaru->date);
 
             $date = $kelolaAbsensiDataTerbaru->date;
             $time_first = $kelolaAbsensiDataTerbaru->check_in_time;
@@ -48,7 +48,7 @@ class DashboardController extends Controller
             'date' => $date,
             'time_first' => $time_first,
             'time_last' => $time_last,
-            'absenBerdasarkanTanggalTerbaru' => $absenBerdasarkanTanggalTerbaru,
+            // 'absenBerdasarkanTanggalTerbaru' => $absenBerdasarkanTanggalTerbaru,
             'active' => 'dashboard',
             'title' => 'Dashboard',
         ];

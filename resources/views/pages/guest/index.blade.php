@@ -137,8 +137,10 @@
 
                                 @if(isset($guests_NonQR))
                                   @foreach ($guests_NonQR as $gnq)
+
+
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $gnq->id }}</td>
                                             <td>{{ $gnq->nama_customer }}</td>
                                             <td>{{ $gnq->kota }}</td>
                                             <td>{{ $gnq->segmen }}</td>
@@ -196,7 +198,7 @@
                                 @if(isset($guests))
                                     @foreach ($guests as $guest)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $guest->id }}</td>
                                             <td>{{ $guest->nama_customer }}</td>
                                             <td>{{ $guest->kota }}</td>
                                             <td>{{ $guest->segmen }}</td>

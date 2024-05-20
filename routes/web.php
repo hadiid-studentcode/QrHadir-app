@@ -4,6 +4,7 @@
 
 <?php
 
+use App\Exports\GuestsExport;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\LoginController;
 use App\Models\Guests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', function () {
 
@@ -32,6 +34,8 @@ Route::get('/cetak', [GuestController::class, 'cetak'])->name('guests.cetak');
 
 // kelola absensi
 Route::resource('/kelola-absensi', KelolaAbsenController::class);
+
+Route::get('/kelola-absensi/show/export-excel/{id_kelolaAbsensi}', [KelolaAbsenController::class, 'cetak'])->name('kelola-absensi.cetak');
 
 // absensi
 // Route::get('/absensi/{qr_code}', [AbsensiController::class, 'store'])->name('absen.store');
@@ -66,3 +70,12 @@ Route::get('/hasing', function () {
 
     dd($test);
 });
+
+Route::get('/export-excel', function () {
+
+   return Excel::download(new GuestsExport, 'guests.xlsx');
+});
+
+
+
+

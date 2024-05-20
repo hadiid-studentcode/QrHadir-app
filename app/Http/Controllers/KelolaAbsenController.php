@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Absensiexport;
 use App\Models\Absensi;
 use App\Models\Kelola_absensi;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KelolaAbsenController extends Controller
 {
@@ -66,13 +68,19 @@ class KelolaAbsenController extends Controller
     public function show(string $id)
     {
 
+
         //    get tanggal di kelola absensi
 
         $dataKelolaAbsensi = $this->kelola->getKelolaAbsensiById($id);
+       
 
-        $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date);
+
+        $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date, $dataKelolaAbsensi->check_in_time, $dataKelolaAbsensi->check_out_time);
+
+
 
         return view('pages.kelola.show')
+            ->with('id_kelolaAbsensi', $dataKelolaAbsensi->id)
             ->with('absensi', $dataAbsensi)
             ->with('date', $dataKelolaAbsensi->date)
             ->with('first_time', $dataKelolaAbsensi->check_in_time)
@@ -105,5 +113,9 @@ class KelolaAbsenController extends Controller
         $this->kelola->deleteKelolaAbsensi($id);
 
         return back();
+    }
+
+    public function cetak(){
+        return Excel::download(new Absensiexport, 'absensi.xlsx');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Absensi extends Model
 {
@@ -27,12 +28,15 @@ class Absensi extends Model
         return Absensi::create($data);
     }
 
-    public function getAbsensiByDate($date)
+    public function getAbsensiByDate($date, $time_in, $time_out)
     {
 
-        return Absensi::where('date', $date)
-            ->join('guests', 'absensi.id_guests', '=', 'guests.id')
-            ->get();
+        return DB::table('absensi')
+        ->where('date', '=', $date)
+        ->whereBetween('time', [$time_in, $time_out])
+        ->join('guests', 'absensi.id_guests', '=', 'guests.id')
+        ->get();
+            
     }
 
     public function getGuestAbsensiHadir()

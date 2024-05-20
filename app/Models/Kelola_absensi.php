@@ -36,7 +36,7 @@ class Kelola_absensi extends Model
 
     public function getKelolaAbsensiById($id)
     {
-        return Kelola_absensi::find($id)->first();
+        return Kelola_absensi::where('id', $id)->first();
     }
 
     public function getKelolaAbsensiLastFirst()

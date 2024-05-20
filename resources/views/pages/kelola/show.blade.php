@@ -4,7 +4,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#tambahAbsensi">Cetak</button>
+                <a class="btn btn-primary" href="{{ url('/kelola-absensi/show/export-excel/'.$id_kelolaAbsensi) }}" target="_blank">Cetak</a>
+
+                <a class="btn btn-primary" href="{{ url('/kelola-absensi') }}">Kembali</a>
 
                 <div class="card">
 

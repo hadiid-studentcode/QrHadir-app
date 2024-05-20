@@ -26,6 +26,8 @@ class Guests extends Model
     public function GetGuests()
     {
         return Guests::all();
+
+        // return Guests::where('id', '>=', 510)->where('id', '<=', 520)->get(); // 761
         // return Guests::whereNull('qr_code')->get();
 
     }

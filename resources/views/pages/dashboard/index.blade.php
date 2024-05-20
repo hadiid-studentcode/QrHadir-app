@@ -76,14 +76,14 @@
                                 <th>status</th>
                             </thead>
                             <tbody>
-                                @foreach ($absenBerdasarkanTanggalTerbaru as $absen)
+                                {{-- @foreach ($absenBerdasarkanTanggalTerbaru as $absen)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $absen->nama_lengkap }}</td>
+                                        <td>{{ $absen->nama_customer }}</td>
                                         <td>{{ $absen->time }}</td>
                                         <td>{{ $absen->status }}</td>
                                     </tr>
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
