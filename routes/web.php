@@ -35,7 +35,8 @@ Route::get('/cetak', [GuestController::class, 'cetak'])->name('guests.cetak');
 // kelola absensi
 Route::resource('/kelola-absensi', KelolaAbsenController::class);
 
-Route::get('/kelola-absensi/show/export-excel/{id_kelolaAbsensi}', [KelolaAbsenController::class, 'cetak'])->name('kelola-absensi.cetak');
+
+Route::get('/kelola-absensi/show/export-excel/{date}/{check_in_time}/{check_out_time}', [KelolaAbsenController::class, 'cetak'])->name('kelola-absensi.cetak');
 
 // absensi
 // Route::get('/absensi/{qr_code}', [AbsensiController::class, 'store'])->name('absen.store');

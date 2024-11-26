@@ -32,7 +32,7 @@
         
 
              <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
-                 <a class="nav-link" href="https://qr-attendify.vercel.app/" target="_blank">
+                 <a class="nav-link" href="{{ route('absen.index') }}" target="_blank">
                      <i class="material-icons">radio_button_checked</i>
                      <p>QR Code Scanner</p>
                  </a>

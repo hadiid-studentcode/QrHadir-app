@@ -36,6 +36,7 @@ class AbsensiController extends Controller
 
             // tambahkan absensi
             $data = [
+                'kode_absensi' => $qrcode,
                 'id_guests' => $dataGuests->id,
                 'date' => Carbon::now('Asia/Jakarta')->format('Y-m-d'),
                 'time' => Carbon::now('Asia/Jakarta')->format('H:i:s'),
@@ -44,6 +45,7 @@ class AbsensiController extends Controller
 
             // kondisi jika data sudah masuk dan tidak duplikat
             $absensi = Absensi::where('id_guests', $dataGuests->id)->first();
+           
 
             try {
                 if ($absensi != null) {
@@ -58,6 +60,7 @@ class AbsensiController extends Controller
 
                 }
             } catch (\Throwable $th) {
+                dd($th->getMessage());
                 return redirect('/qr-scanner')->with('warning', 'Terjadi Kesalahan');
             }
 

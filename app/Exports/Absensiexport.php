@@ -14,17 +14,27 @@ class Absensiexport implements FromCollection, WithHeadings, WithMapping
      * @return \Illuminate\Support\Collection
      */
 
+    protected $date;
+    protected $check_in_time;
+    protected $check_out_time;
 
-
+    public function __construct($date, $check_in_time, $check_out_time)
+    {
+        $this->date = $date;
+        $this->check_in_time = $check_in_time;
+        $this->check_out_time = $check_out_time;
+    }
 
     public function collection()
     {
+       
 
+        
 
 
         $kelolaAbsensi = new Absensi();
 
-        $dataAbsensi = $kelolaAbsensi->getAbsensiByDate('2024-05-20', '17:59:00', '23:59:00');
+        $dataAbsensi = $kelolaAbsensi->getAbsensiByDate($this->date, $this->check_in_time, $this->check_out_time);
 
 
         return $dataAbsensi;

@@ -72,7 +72,7 @@ class KelolaAbsenController extends Controller
         //    get tanggal di kelola absensi
 
         $dataKelolaAbsensi = $this->kelola->getKelolaAbsensiById($id);
-       
+
 
 
         $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date, $dataKelolaAbsensi->check_in_time, $dataKelolaAbsensi->check_out_time);
@@ -87,6 +87,15 @@ class KelolaAbsenController extends Controller
             ->with('title', 'Kelola Absensi')
             ->with('active', 'kelola')
             ->with('last_time', $dataKelolaAbsensi->check_out_time);
+    }
+    public function getDataAbsensi($id)
+    {
+     
+        $dataKelolaAbsensi = $this->kelola->getKelolaAbsensiById($id);
+
+        $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date, $dataKelolaAbsensi->check_in_time, $dataKelolaAbsensi->check_out_time);
+
+        return response()->json($dataAbsensi);
     }
 
     /**
@@ -114,8 +123,12 @@ class KelolaAbsenController extends Controller
 
         return back();
     }
+  
+    public function cetak($date, $check_in_time, $check_out_time)
+    {
 
-    public function cetak(){
-        return Excel::download(new Absensiexport, 'absensi.xlsx');
-    }
+      
+
+        // Lakukan proses export ke Excel menggunakan data yang didapat
+        return Excel::download(new Absensiexport($date, $check_in_time, $check_out_time), 'absensi.xlsx');    }
 }
