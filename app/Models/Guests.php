@@ -13,9 +13,8 @@ class Guests extends Model
 
     protected $fillable = [
         'id',
-        'nama_customer',
-        'kota',
-        'segmen',
+        'nama',
+        'pimpinan',
         'link',
         'qr_code',
 

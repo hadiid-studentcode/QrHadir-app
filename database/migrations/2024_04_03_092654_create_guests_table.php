@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('nama_customer')->nullable();
-            $table->string('kota')->nullable();
-            $table->string('segmen')->nullable();
+            $table->string('nama')->nullable();
+            $table->string('pimpinan')->nullable();
             $table->string('link')->nullable();
             $table->string('qr_code')->nullable();
             $table->timestamps();

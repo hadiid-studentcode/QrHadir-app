@@ -18,11 +18,18 @@ class GuestController extends Controller
     {
         $dataGuest = $this->guests->GetGuests();
 
-        return view('pages.guest.index', [
+        return view('versi2.pages.manajemen.peserta.index', [
             'guests' => $dataGuest,
             'title' => 'Guest',
             'active' => 'guests',
         ]);
+
+
+        // return view('pages.guest.index', [
+        //     'guests' => $dataGuest,
+        //     'title' => 'Guest',
+        //     'active' => 'guests',
+        // ]);
     }
 
     public function show($id)
@@ -32,21 +39,29 @@ class GuestController extends Controller
         $dataGuest = $this->guests->findOrFail($id);
 
         if (empty($dataGuest->qr_code)) {
-            $dataQR = hash('crc32', $dataGuest->nama_customer);
+            $dataQR = hash('crc32', $dataGuest->nama);
             // Menggunakan Eloquent untuk update, lebih aman dan praktis
-            $dataGuest->qr_code = $dataGuest->id.'-'.$dataQR;
+            $dataGuest->qr_code = $dataGuest->id . '-' . $dataQR;
 
             $dataGuest->save(); // Menyimpan perubahan ke database
         }
 
-        return view('pages.guest.show', [
+        return view('versi2.pages.manajemen.peserta.show', [
             'title' => 'Guest',
             'active' => 'guests',
             'guest' => $dataGuest,
-            'nama' => $dataGuest->nama_customer,
-            'kota' => $dataGuest->kota,
-            'segmen' => $dataGuest->segmen,
+            'nama' => $dataGuest->nama,
+            'pimpinan' => $dataGuest->pimpinan,
         ]);
+
+        // return view('pages.guest.show', [
+        //     'title' => 'Guest',
+        //     'active' => 'guests',
+        //     'guest' => $dataGuest,
+        //     'nama' => $dataGuest->nama_customer,
+        //     'kota' => $dataGuest->kota,
+        //     'segmen' => $dataGuest->segmen,
+        // ]);
     }
 
     public function store(Request $request)
@@ -58,9 +73,8 @@ class GuestController extends Controller
 
         $data = [
             'id' => $id,
-            'nama_customer' => $request->nama_customer,
-            'kota' => $request->kota,
-            'segmen' => $request->segmen,
+            'nama' => $request->nama,
+            'pimpinan' => $request->pimpinan,
 
         ];
 
@@ -100,10 +114,17 @@ class GuestController extends Controller
 
         $dataGuest = $this->guests->GetGuestsNonQR();
 
-        return view('pages.guest.index')
-            ->with('title', 'Guest')
-            ->with('active', 'guests')
-            ->with('guests_NonQR', $dataGuest);
+
+        return view('versi2.pages.manajemen.peserta.index', [
+            'guests_NonQR' => $dataGuest,
+            'title' => 'Guest',
+            'active' => 'guests',
+        ]);
+
+        // return view('pages.guest.index')
+        //     ->with('title', 'Guest')
+        //     ->with('active', 'guests')
+        //     ->with('guests_NonQR', $dataGuest);
     }
 
     // Tambahkan metode lain sesuai kebutuhan
