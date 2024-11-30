@@ -53,6 +53,6 @@ class DashboardController extends Controller
             'title' => 'Dashboard',
         ];
 
-        return view('versi2.pages.dashboard.index', $data);
+        return view('pages.dashboard.index', $data);
     }
 }

@@ -1,49 +1,55 @@
- <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
-     <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
-     <div class="logo"><a href="/dashboard" class="simple-text logo-normal">
-             {{ config('app.name') }}
-         </a></div>
-     <div class="sidebar-wrapper">
-         <ul class="nav">
-             <li class="nav-item {{ $active == 'dashboard' ? 'active' : '' }}  ">
-                 <a class="nav-link" href="{{ url('/dashboard') }}">
-                     <i class="material-icons">dashboard</i>
-                     <p>Dashboard</p>
-                 </a>
-             </li>
-             <li class="nav-item {{ $active == 'guests' ? 'active' : '' }} ">
-                 <a class="nav-link" href="{{ url('/guests') }}">
-                     <i class="material-icons">person</i>
-                     <p>Manajemen Guests</p>
-                 </a>
-             </li>
-             <li class="nav-item {{ $active == 'kelola' ? 'active' : '' }} ">
-
-
-                 <a class="nav-link" href="{{ url('/kelola-absensi') }}">
-                     <i class="material-icons">content_paste</i>
-                     <p>Kelola Absensi</p>
-                 </a>
-             </li>
-        
-
-             <li class="nav-item {{ $active == 'laporan' ? 'active' : '' }} ">
-                 <a class="nav-link" href="{{ route('absen.index') }}" target="_blank">
-                     <i class="material-icons">radio_button_checked</i>
-                     <p>QR Code Scanner</p>
-                 </a>
-             </li>
-
-              <li class="nav-item {{ $active == 'logout' ? 'active' : '' }} ">
-                 <a class="nav-link" href="/logout">
-                     <i class="material-icons">logout</i>
-                     <p>Logout</p>
-                 </a>
-             </li>
-         </ul>
-     </div>
- </div>
+	<div class="sidebar-wrapper" data-simplebar="true">
+			<div class="sidebar-header">
+				<div>
+					<img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
+				</div>
+				<div>
+					<h4 class="logo-text">{{ config('app.name') }}</h4>
+				</div>
+				<div class="toggle-icon ms-auto"><i class='bx bx-first-page'></i>
+				</div>
+			</div>
+			<!--navigation-->
+			<ul class="metismenu" id="menu">
+				<li class="nav-item {{ $active == 'dashboard' ? 'active' : '' }}  ">
+					<a href="{{ url('/dashboard') }}">
+						<div class="parent-icon"><i class='bx bx-home'></i>
+						</div>
+						<div class="menu-title">Dashboard</div>
+					</a>
+				
+				</li>
+				
+				<li class="menu-label">Manajemen</li>
+                <li class="nav-item {{ $active == 'guests' ? 'active' : '' }} ">
+					<a href="{{ url('/guests') }}" >
+						<div class="parent-icon"><i class='bx bx-spa' ></i>
+						</div>
+						<div class="menu-title">Manajemen Peserta</div>
+					</a>
+				
+				</li>
+				
+				
+				<li class="menu-label">Kelola</li>
+				<li class="nav-item {{ $active == 'kelola' ? 'active' : '' }} ">
+					<a href="{{ url('/kelola-absensi') }}">
+						<div class="parent-icon"><i class='bx bx-hourglass' ></i>
+						</div>
+						<div class="menu-title">Absensi</div>
+					</a>
+				
+				</li>
+				<li>
+					<a href="{{ route('absen.index') }}">
+						<div class="parent-icon"><i class="bx bx-grid-alt"></i>
+						</div>
+						<div class="menu-title">QR Code Scanner</div>
+					</a>
+				
+				</li>
+				
+				
+			</ul>
+			<!--end navigation-->
+		</div>

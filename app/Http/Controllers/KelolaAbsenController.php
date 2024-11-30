@@ -28,7 +28,7 @@ class KelolaAbsenController extends Controller
 
         $dataKelolaAbsensi = $this->kelola->getKelolaAbsensi();
 
-        return view('versi2.pages.absensi.index')
+        return view('pages.absensi.index')
         ->with('kelola_absensi', $dataKelolaAbsensi)
             ->with('title', 'Kelola Absensi')
             ->with('active', 'kelola');
@@ -83,7 +83,7 @@ class KelolaAbsenController extends Controller
         $dataAbsensi = $this->absensi->getAbsensiByDate($dataKelolaAbsensi->date, $dataKelolaAbsensi->check_in_time, $dataKelolaAbsensi->check_out_time);
 
 
-        return view('versi2.pages.absensi.show')
+        return view('pages.absensi.show')
             ->with('id_kelolaAbsensi', $dataKelolaAbsensi->id)
             ->with('absensi', $dataAbsensi)
             ->with('date', $dataKelolaAbsensi->date)

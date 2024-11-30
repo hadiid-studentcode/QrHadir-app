@@ -18,7 +18,7 @@ class GuestController extends Controller
     {
         $dataGuest = $this->guests->GetGuests();
 
-        return view('versi2.pages.manajemen.peserta.index', [
+        return view('pages.manajemen.peserta.index', [
             'guests' => $dataGuest,
             'title' => 'Guest',
             'active' => 'guests',
@@ -46,7 +46,7 @@ class GuestController extends Controller
             $dataGuest->save(); // Menyimpan perubahan ke database
         }
 
-        return view('versi2.pages.manajemen.peserta.show', [
+        return view('pages.manajemen.peserta.show', [
             'title' => 'Guest',
             'active' => 'guests',
             'guest' => $dataGuest,
@@ -115,7 +115,7 @@ class GuestController extends Controller
         $dataGuest = $this->guests->GetGuestsNonQR();
 
 
-        return view('versi2.pages.manajemen.peserta.index', [
+        return view('pages.manajemen.peserta.index', [
             'guests_NonQR' => $dataGuest,
             'title' => 'Guest',
             'active' => 'guests',

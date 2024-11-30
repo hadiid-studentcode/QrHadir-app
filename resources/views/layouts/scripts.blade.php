@@ -1,18 +1,18 @@
- <!--   Core JS Files   -->
- <script src="{{ asset('/assets/js/core/jquery.min.js') }}"></script>
- <script src="{{ asset('/assets/js/core/popper.min.js') }}"></script>
- <script src="{{ asset('/assets/js/core/bootstrap-material-design.min.js') }}"></script>
- <script src="https://unpkg.com/default-passive-events"></script>
- <script src="{{ asset('/assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
- <!-- Place this tag in your head or just before your close body tag. -->
- <script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Bootstrap JS -->
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<!--plugins-->
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/js/index3.js') }}"></script> --}}
+{{-- <script>
+    new PerfectScrollbar('.best-selling-products');
+    new PerfectScrollbar('.recent-reviews');
+    new PerfectScrollbar('.support-list');
+</script> --}}
+<!--app JS-->
+{{-- <script src="{{ asset('assets/js/app.js') }}"></script> --}}
 
- <!-- Chartist JS -->
- <script src="{{ asset('/assets/js/plugins/chartist.min.js') }}"></script>
- <!--  Notifications Plugin    -->
- <script src="{{ asset('/assets/js/plugins/bootstrap-notify.js') }}"></script>
- <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
- <script src="{{ asset('/assets/js/material-dashboard.js?v=2.1.0') }}"></script>
- <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-
-
+@stack('scripts')

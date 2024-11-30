@@ -1,95 +1,111 @@
 @extends('layouts.main')
 
-@section('main')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">person</i>
-                        </div>
-                        <p class="card-category">Total Guest</p>
-                        <h3 class="card-title">{{ $totalGuests }} Orang
+@push('styles')
+    
+@endpush
 
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-
-                            <a href="/guests" class="warning-link">Get More Guests...</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">done_outline</i>
-                        </div>
-                        <p class="card-category">Total hadir</p>
-                        <h3 class="card-title">{{ $totalHadir }} Orang</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> update absensi {{ $date }}, {{ $time_first }}
-                            -
-                            {{ $time_last }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">disabled_by_default</i>
-                        </div>
-                        <p class="card-category">Total Tidak hadir</p>
-                        <h3 class="card-title">10 Orang</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> update absensi {{ $date }},
-                            {{ $time_first }} -
-                            {{ $time_last }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+@section('content')
+    <div class="page-content">
         <div class="row">
             <div class="col">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Informasi Kehadiran</h4>
-                        <p class="card-category">update absensi {{ $date }}, {{ $time_first }} -
-                            {{ $time_last }}</p>
-                    </div>
-                    <div class="card-body table-responsive">
-                        <table class="table table-hover">
-                            <thead class="text-warning">
-                                <th>No</th>
-                                <th>Nama Lengkap</th>
-                                <th>Waktu absen</th>
-                                <th>status</th>
-                            </thead>
-                            <tbody>
-                                {{-- @foreach ($absenBerdasarkanTanggalTerbaru as $absen)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $absen->nama_customer }}</td>
-                                        <td>{{ $absen->time }}</td>
-                                        <td>{{ $absen->status }}</td>
-                                    </tr>
-                                @endforeach --}}
-                            </tbody>
-                        </table>
+                <div class="card radius-10 overflow-hidden bg-gradient-cosmic">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white">Total Peserta</p>
+                                <h5 class="mb-0 text-white">{{ $totalGuests }}</h5>
+                            </div>
+                            <div class="ms-auto text-white"><i class='bx bx-cart font-30'></i>
+                            </div>
+                        </div>
+                        <div class="progress bg-white-2 radius-10 mt-4" style="height:4.5px;">
+                            <div class="progress-bar bg-white" role="progressbar" style="width: 46%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col">
+                <div class="card radius-10 overflow-hidden bg-gradient-burning">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white">Total Hadir</p>
+                                <h5 class="mb-0 text-white">{{ $totalHadir }}</h5>
+                            </div>
+                            <div class="ms-auto text-white"><i class='bx bx-wallet font-30'></i>
+                            </div>
+                        </div>
+                        <div class="progress bg-white-2 radius-10 mt-4" style="height:4.5px;">
+                            <div class="progress-bar bg-white" role="progressbar" style="width: 72%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 overflow-hidden bg-gradient-Ohhappiness">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white">Total Tidak Hadir</p>
+                                <h5 class="mb-0 text-white">24.5K</h5>
+                            </div>
+                            <div class="ms-auto text-white"><i class='bx bx-bulb font-30'></i>
+                            </div>
+                        </div>
+                        <div class="progress bg-white-2 radius-10 mt-4" style="height:4.5px;">
+                            <div class="progress-bar bg-white" role="progressbar" style="width: 68%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div><!--end row-->
 
+      
+      
+    
+
+        <div class="card radius-10">
+            <div class="card-header border-bottom-0 bg-transparent">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h5 class="font-weight-bold mb-0">Recent Orders</h5>
+                    </div>
+                    <div class="ms-auto">
+                        <button type="button" class="btn btn-white radius-10">View More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table mb-0 align-middle">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Customer</th>
+                                <th>Product id</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                               
+                                <td>Nike Sports NK</td>
+                                <td>Mitchell Daniel</td>
+                                <td>#9668521</td>
+                                <td>$99.85</td>
+                                <td><a href="javaScript:;" class="btn btn-sm btn-success radius-30">Delivered</a>
+                                </td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
+@push('scripts')
+    
+@endpush

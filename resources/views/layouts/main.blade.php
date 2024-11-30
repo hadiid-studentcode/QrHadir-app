@@ -1,39 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="color-sidebar sidebarcolor3">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-        {{ config('app.name') }}-{{ $title }}
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-        name='viewport' />
-    @include('layouts.styles')
-
-
-
-
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
+	@include('layouts.styles')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+	<title>{{ config('app.name') }}</title>
 </head>
 
-<body class="">
-    <div class="wrapper ">
-        @include('layouts.sidebar')
-        <div class="main-panel">
-            <!-- Navbar -->
-            @include('layouts.navbar')
-            <!-- End Navbar -->
-            <div class="content">
-                @yield('main')
-            </div>
-            @include('layouts.footer')
-
-        </div>
-    </div>
-
-    @include('layouts.scripts')
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
+		<!--sidebar wrapper -->
+	@include('layouts.sidebar')
+		<!--end sidebar wrapper -->
+		<!--start header -->
+	@include('layouts.headers')
+		<!--end header -->
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			@yield('content')
+		</div>
+		<!--end page wrapper -->
+		<!--start overlay-->
+		<div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+		<footer class="page-footer">
+			<p class="mb-0">Copyright © 2024. All right reserved.</p>
+		</footer>
+	</div>
+	<!--end wrapper-->
+	
+	@include('layouts.scripts')
 </body>
 
 </html>
