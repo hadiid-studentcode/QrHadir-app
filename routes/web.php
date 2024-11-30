@@ -18,9 +18,11 @@ use Maatwebsite\Excel\Facades\Excel;
 Route::get('/', function () {
 
     return view('welcome');
-});
+})->middleware('guest')->name('login');
 
-Route::post('/', [LoginController::class, 'authenticate'])->name('login.authenticate');
+Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate')->middleware('guest');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 // dashboard
 Route::resource('/dashboard', DashboardController::class);
@@ -76,6 +78,8 @@ Route::get('/export-excel', function () {
 
    return Excel::download(new GuestsExport, 'guests.xlsx');
 });
+
+require __DIR__ . '/auth.php';
 
 
 
