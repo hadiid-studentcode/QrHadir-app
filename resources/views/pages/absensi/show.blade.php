@@ -66,7 +66,7 @@
                     <table id="absensiTable" class="table">
                         <thead class="text-primary">
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Pimpinan</th>
                                 <th>Tanggal</th>

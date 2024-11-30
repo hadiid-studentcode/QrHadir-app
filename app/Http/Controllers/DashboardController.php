@@ -23,6 +23,7 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $id_kelolaAbsensi = 1;
         $totalGuests = $this->guests->jumlahGuests();
         $totalHadir = $this->absensi->getGuestAbsensiHadir();
         $kelolaAbsensiDataTerbaru = $this->kelolaAbsensi->getKelolaAbsensiLastFirst();
@@ -51,6 +52,7 @@ class DashboardController extends Controller
             // 'absenBerdasarkanTanggalTerbaru' => $absenBerdasarkanTanggalTerbaru,
             'active' => 'dashboard',
             'title' => 'Dashboard',
+            'id_kelolaAbsensi'=> 'id_kelolaAbsensi',
         ];
 
         return view('pages.dashboard.index', $data);
