@@ -79,7 +79,6 @@ Route::get('/export-excel', function () {
    return Excel::download(new GuestsExport, 'guests.xlsx');
 });
 
-require __DIR__ . '/auth.php';
 
 
 
