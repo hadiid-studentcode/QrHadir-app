@@ -1,4 +1,4 @@
-# Aplikasi Manajemen Tamu dengan QR Code Scanner
+# Aplikasi Absensi dengan QR Code Scanner
 
 ## Deskripsi
 
