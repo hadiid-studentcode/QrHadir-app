@@ -37,9 +37,7 @@
                     <h6 class="card-category">{{ $guest->pimpinan }}</h6>
                     <h4 class="card-title">{{ $guest->nama }}-{{ $guest->pimpinan }}</h4>
                     <p class="card-description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ducimus tempora autem laudantium quod,
-                        veritatis facere perferendis perspiciatis esse optio harum iste, consectetur exercitationem aliquid
-                        ratione porro odio ipsa similique!
+                      
                     </p>
                     <a href="{{ url()->previous() }}" class="btn btn-primary btn-round">Kembali</a>
                     <button class="btn btn-primary btn-round" id="download" >Download</button>

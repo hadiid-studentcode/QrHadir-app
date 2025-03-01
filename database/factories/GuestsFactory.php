@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use App\Models\Guests;
+
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Guests>
  */
@@ -16,10 +19,18 @@ class GuestsFactory extends Factory
      */
     public function definition(): array
     {
+        $companies = [
+            'PT Maju Bersama',
+            'CV Karya Utama',
+            'PT Sentosa Abadi',
+            'PT Bumi Sejahtera',
+            'CV Makmur Jaya',
+        ];
+
         return [
-            'nama_lengkap' => fake()->name(),
-            'delegasi' => fake()->name(),
-            'link' => null,
+            'nama' => fake('id_ID')->name(),
+            'pimpinan' => $companies[array_rand($companies)],
+            'link' => fake()->url(),
             'qr_code' => null,
         ];
     }

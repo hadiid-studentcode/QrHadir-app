@@ -13,6 +13,7 @@ use App\Http\Controllers\LoginController;
 use App\Models\Guests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', function () {
